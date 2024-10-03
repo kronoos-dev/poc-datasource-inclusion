@@ -28,3 +28,64 @@ model benefitBolsaFamilia {
   transferredValue Int
   socialProgram    Int
 }
+
+model federalGovernmentPaymentCard {
+  id                         Int      @id @default(autoincrement())
+  superiorDepartmentBodyCode Int
+  superiorDepartmentBodyName String
+  departmentBodyCode         Int
+  deparmentBodyName          String
+  managementUnitCode         Int
+  managementUnitName         String
+  year                       String
+  month                      Int
+  holderCpf                  String
+  holderName                 String
+  beneficiaryCpfCnpj         String
+  beneficiaryName            String
+  transaction                String
+  transactionDate            DateTime
+  transactionValue           Int
+}
+
+model federalGovernmentPaymentCard_centralizedPurchasing {
+  id                         Int      @id @default(autoincrement())
+  superiorDepartmentBodyCode Int
+  superiorDepartmentBodyName String
+  departmentBodyCode         Int
+  deparmentBodyName          String
+  managementUnitCode         Int
+  managementUnitName         String
+  year                       String
+  month                      Int
+  acquisitionType            String
+  beneficiaryCpfCnpj         String
+  beneficiaryName            String
+  transaction                String
+  transactionDate            DateTime
+  transactionValue           Int
+}
+
+model civilDefensePaymentCard {
+  id                         Int      @id @default(autoincrement())
+  superiorDepartmentBodyCode Int
+  superiorDepartmentBodyName String
+  departmentBodyCode         Int
+  deparmentBodyName          String
+  managementUnitCode         Int
+  managementUnitName         String
+  year                       String
+  month                      Int
+  holderCpf                  String
+  holderName                 String
+  beneficiaryCpfCnpj         String
+  beneficiaryName            String
+  expenseExecutor            String
+  agreementNumber            Int
+  agreementCode              Int
+  agreementName              String
+  transfer                   String
+  transaction                String
+  transactionDate            DateTime
+  transactionValue           Int
+}
