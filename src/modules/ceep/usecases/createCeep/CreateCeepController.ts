@@ -1,12 +1,12 @@
 import { Request, Response } from "express";
 // TODO, repolver paths
 import { getDateTimeFromString } from "../../../../utils/dateParse";
-import { CreateCeepUseCase } from "./createCeepUseCase";
+import { CreateCeepUseCase } from "./CreateCeepUseCase";
 
 class CreateCeepController {
   constructor(private createCeepUseCase: CreateCeepUseCase) {}
 
-  execute(request: Request, response: Response): Response {
+  async execute(request: Request, response: Response): Promise<Response<any, Record<string, any>>> {
     try {
       const {
         cnpj,
@@ -17,7 +17,7 @@ class CreateCeepController {
         disagreementDeal
       } = request.body;
 
-      const newCeep = this.createCeepUseCase.execute({
+      const newCeep = await this.createCeepUseCase.execute({
         cnpj,
         corporateName,
         sanctionDescription,

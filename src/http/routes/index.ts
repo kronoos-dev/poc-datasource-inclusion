@@ -3,6 +3,6 @@ import { ceepRoutes } from "./ceep";
 
 const mainRoutes = Router();
 
-mainRoutes.use(ceepRoutes)
+mainRoutes.use('/ceeps', ceepRoutes)
 
 export { mainRoutes };

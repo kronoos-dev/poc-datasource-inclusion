@@ -1,13 +1,18 @@
-import { Prisma, ceep_datasource } from "@prisma/client";
+import { Ceep, Prisma } from "@prisma/client";
 import { ICeepsRepository } from "../ICeepRepository";
 
 // TODO, resolver paths
 import { prisma } from "../../../../lib/prisma";
-import { getDateTimeFromString } from "../../../../utils/dateParse";
 
 class PrismaCeepRepository implements ICeepsRepository {
-
+  
   private static INSTANCE: PrismaCeepRepository;
+
+  async find(): Promise<Ceep[]> {
+    const ceepsList = await prisma.ceep.findMany()
+
+    return ceepsList;
+  }
 
   public static getInstance(): PrismaCeepRepository {
     if (!PrismaCeepRepository.INSTANCE) {
@@ -24,15 +29,15 @@ class PrismaCeepRepository implements ICeepsRepository {
     sanctionDate,
     leeniencyAgreement,
     disagreementDeal
-  }: Prisma.ceep_datasourceCreateInput): Promise<ceep_datasource> {
+  }: Prisma.CeepCreateInput): Promise<Ceep> {
     
-    const newCeep = await prisma.ceep_datasource.create({
+    const newCeep = await prisma.ceep.create({
       data: {
         cnpj,
         corporateName,
         sanctionDescription,
         // TODO, resolver tipagem
-        sanctionDate: getDateTimeFromString(sanctionDate as string),
+        sanctionDate,
         leeniencyAgreement,
         disagreementDeal
       },

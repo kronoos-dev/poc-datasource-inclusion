@@ -5,7 +5,7 @@ import { ICeepsRepository } from "../../repositories/ICeepRepository";
 class CreateCeepUseCase {
   constructor(private ceepsRepository: ICeepsRepository) {}
 
-  execute( data: Prisma.ceep_datasourceCreateInput) {
+  execute( data: Prisma.CeepCreateInput) {
     const ceep = this.ceepsRepository.create(data);
 
     return ceep

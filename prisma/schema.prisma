@@ -8,7 +8,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model ceep_datasource {
+model Ceep {
   id                  String   @id @default(uuid()) @db.Uuid
   cnpj                String   @db.VarChar(14)
   corporateName       String
