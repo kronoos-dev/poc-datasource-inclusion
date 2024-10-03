@@ -19,6 +19,7 @@ COPY . .
 
 # Expose port 3333 (or the port your app uses).
 EXPOSE 3333
+EXPOSE 5432
 
 RUN apt-get update -y && apt-get install -y openssl build-essential libpq-dev
 

@@ -1,8 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 generator client {
   provider      = "prisma-client-js"
   binaryTargets = ["native", "debian-openssl-3.0.x"]
@@ -13,8 +8,8 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model CEEP_datasource {
-  id                  Int      @id @default(autoincrement())
+model ceep_datasource {
+  id                  String   @id @default(uuid()) @db.Uuid
   cnpj                String   @db.VarChar(14)
   corporateName       String
   sanctionDescription String
@@ -24,13 +19,13 @@ model CEEP_datasource {
 }
 
 model benefitBolsaFamilia {
-  id               Int @id @default(autoincrement())
   transferredValue Int
   socialProgram    Int
+  id               String @id @default(uuid()) @db.Uuid
 }
 
 model federalGovernmentPaymentCard {
-  id                         Int      @id @default(autoincrement())
+  id                         String   @id @default(uuid()) @db.Uuid
   superiorDepartmentBodyCode Int
   superiorDepartmentBodyName String
   departmentBodyCode         Int
@@ -49,7 +44,7 @@ model federalGovernmentPaymentCard {
 }
 
 model federalGovernmentPaymentCard_centralizedPurchasing {
-  id                         Int      @id @default(autoincrement())
+  id                         String   @id @default(uuid()) @db.Uuid
   superiorDepartmentBodyCode Int
   superiorDepartmentBodyName String
   departmentBodyCode         Int
@@ -67,7 +62,7 @@ model federalGovernmentPaymentCard_centralizedPurchasing {
 }
 
 model civilDefensePaymentCard {
-  id                         Int      @id @default(autoincrement())
+  id                         String   @id @default(uuid()) @db.Uuid
   superiorDepartmentBodyCode Int
   superiorDepartmentBodyName String
   departmentBodyCode         Int
