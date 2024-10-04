@@ -4,7 +4,10 @@ import { CreateCeepUseCase } from "./CreateCeepUseCase";
 class CreateCeepController {
   constructor(private createCeepUseCase: CreateCeepUseCase) {}
 
-  async execute(request: Request, response: Response): Promise<Response<any, Record<string, any>>> {
+  async execute(
+    request: Request,
+    response: Response
+  ): Promise<Response<any, Record<string, any>>> {
     try {
       const {
         cnpj,
@@ -12,7 +15,7 @@ class CreateCeepController {
         sanctionDescription,
         sanctionDate,
         leeniencyAgreement,
-        disagreementDeal
+        disagreementDeal,
       } = request.body;
 
       const newCeep = await this.createCeepUseCase.execute({
@@ -21,9 +24,9 @@ class CreateCeepController {
         sanctionDescription,
         sanctionDate,
         leeniencyAgreement,
-        disagreementDeal
-      })
-      
+        disagreementDeal,
+      });
+
       return response.status(201).json(newCeep);
     } catch (error) {
       return response.status(400).json({ error });

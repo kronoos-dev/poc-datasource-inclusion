@@ -6,8 +6,8 @@ class ListCeepUseCase {
   execute() {
     const ceepsList = this.ceepsRepository.find();
 
-    return ceepsList
-  }  
+    return ceepsList;
+  }
 }
 
 export { ListCeepUseCase };

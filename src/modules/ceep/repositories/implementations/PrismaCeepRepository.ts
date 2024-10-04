@@ -4,11 +4,10 @@ import { Ceep, Prisma } from "@prisma/client";
 import { ICeepsRepository } from "../ICeepRepository";
 
 class PrismaCeepRepository implements ICeepsRepository {
-  
   private static INSTANCE: PrismaCeepRepository;
 
   async find(): Promise<Ceep[]> {
-    const ceepsList = await prisma.ceep.findMany()
+    const ceepsList = await prisma.ceep.findMany();
 
     return ceepsList;
   }
@@ -27,9 +26,8 @@ class PrismaCeepRepository implements ICeepsRepository {
     sanctionDescription,
     sanctionDate,
     leeniencyAgreement,
-    disagreementDeal
+    disagreementDeal,
   }: Prisma.CeepCreateInput): Promise<Ceep> {
-    
     const newCeep = await prisma.ceep.create({
       data: {
         cnpj,
@@ -37,13 +35,12 @@ class PrismaCeepRepository implements ICeepsRepository {
         sanctionDescription,
         sanctionDate,
         leeniencyAgreement,
-        disagreementDeal
+        disagreementDeal,
       },
     });
 
-    return newCeep
+    return newCeep;
   }
-
 }
 
 export { PrismaCeepRepository };

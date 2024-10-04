@@ -10,8 +10,8 @@ class CreateCeepUseCase {
     corporateName,
     sanctionDescription,
     sanctionDate,
-    leeniencyAgreement, 
-    disagreementDeal
+    leeniencyAgreement,
+    disagreementDeal,
   }: Prisma.CeepCreateInput) {
     const ceep = this.ceepsRepository.create({
       cnpj,
@@ -19,11 +19,11 @@ class CreateCeepUseCase {
       sanctionDescription,
       sanctionDate: getDateTimeFromString(sanctionDate as string),
       leeniencyAgreement,
-      disagreementDeal  
+      disagreementDeal,
     });
 
-    return ceep
-  }  
+    return ceep;
+  }
 }
 
 export { CreateCeepUseCase };
