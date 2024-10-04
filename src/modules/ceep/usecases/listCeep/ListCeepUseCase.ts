@@ -1,5 +1,4 @@
-// TODO, resolver paths
-import { ICeepsRepository } from "../../repositories/ICeepRepository";
+import { ICeepsRepository } from "@modules/ceep/repositories/ICeepRepository";
 
 class ListCeepUseCase {
   constructor(private ceepsRepository: ICeepsRepository) {}
@@ -7,8 +6,8 @@ class ListCeepUseCase {
   execute() {
     const ceepsList = this.ceepsRepository.find();
 
-    return ceepsList
-  }  
+    return ceepsList;
+  }
 }
 
 export { ListCeepUseCase };
