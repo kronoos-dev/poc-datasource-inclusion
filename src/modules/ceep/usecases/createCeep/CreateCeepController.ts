@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-// TODO, repolver paths
 import { CreateCeepUseCase } from "./CreateCeepUseCase";
 
 class CreateCeepController {

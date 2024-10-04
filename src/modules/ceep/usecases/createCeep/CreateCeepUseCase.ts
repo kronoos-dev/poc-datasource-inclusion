@@ -1,7 +1,6 @@
+import { ICeepsRepository } from "@modules/ceep/repositories/ICeepRepository";
 import { Prisma } from "@prisma/client";
-// TODO, resolver paths
 import { getDateTimeFromString } from "@utils/dateParse";
-import { ICeepsRepository } from "../../repositories/ICeepRepository";
 
 class CreateCeepUseCase {
   constructor(private ceepsRepository: ICeepsRepository) {}
@@ -11,7 +10,7 @@ class CreateCeepUseCase {
     corporateName,
     sanctionDescription,
     sanctionDate,
-    leeniencyAgreement,
+    leeniencyAgreement, 
     disagreementDeal
   }: Prisma.CeepCreateInput) {
     const ceep = this.ceepsRepository.create({

@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-// TODO, repolver paths
 import { ListCeepUseCase } from "./ListCeepUseCase";
 
 class ListCeepController {

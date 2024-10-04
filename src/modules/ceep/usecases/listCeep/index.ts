@@ -1,4 +1,4 @@
-import { PrismaCeepRepository } from "../../repositories/implementations/PrismaCeepRepository";
+import { PrismaCeepRepository } from "@modules/ceep/repositories/implementations/PrismaCeepRepository";
 import { ListCeepController } from "./ListCeepController";
 import { ListCeepUseCase } from "./ListCeepUseCase";
 

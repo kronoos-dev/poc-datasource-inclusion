@@ -1,7 +1,7 @@
 import { Request, Response, Router } from "express";
-// TODO, resolver paths
-import { createCeepController } from "../../../modules/ceep/usecases/createCeep";
-import { listCeepController } from "../../../modules/ceep/usecases/listCeep";
+
+import { createCeepController } from "@modules/ceep/usecases/createCeep";
+import { listCeepController } from "@modules/ceep/usecases/listCeep";
 
 const ceepRoutes = Router();
 

@@ -1,8 +1,7 @@
+import { prisma } from "@lib/prisma";
 import { Ceep, Prisma } from "@prisma/client";
-import { ICeepsRepository } from "../ICeepRepository";
 
-// TODO, resolver paths
-import { prisma } from "../../../../lib/prisma";
+import { ICeepsRepository } from "../ICeepRepository";
 
 class PrismaCeepRepository implements ICeepsRepository {
   
@@ -36,7 +35,6 @@ class PrismaCeepRepository implements ICeepsRepository {
         cnpj,
         corporateName,
         sanctionDescription,
-        // TODO, resolver tipagem
         sanctionDate,
         leeniencyAgreement,
         disagreementDeal
