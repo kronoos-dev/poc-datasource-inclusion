@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 // TODO, repolver paths
-import { getDateTimeFromString } from "../../../../utils/dateParse";
 import { CreateCeepUseCase } from "./CreateCeepUseCase";
 
 class CreateCeepController {
@@ -21,7 +20,7 @@ class CreateCeepController {
         cnpj,
         corporateName,
         sanctionDescription,
-        sanctionDate: getDateTimeFromString(sanctionDate),
+        sanctionDate,
         leeniencyAgreement,
         disagreementDeal
       })
