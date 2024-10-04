@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "scrapple": "tsx watch src/scraping",
     "dev": "tsx src/index.ts",
     "start": "node src/index.ts"
   },
@@ -13,6 +14,7 @@
   "dependencies": {
     "@prisma/client": "^5.20.0",
     "express": "^4.21.0",
+    "puppeteer": "^23.5.0",
     "tsup": "^8.3.0",
     "tsx": "^4.19.1"
   },
