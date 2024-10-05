@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "scrapple": "tsx watch src/scraping",
-    "dev": "tsx src/index.ts",
+    "dev": "npx prisma generate && tsx src/index.ts",
     "start": "node src/index.ts"
   },
   "keywords": [],
