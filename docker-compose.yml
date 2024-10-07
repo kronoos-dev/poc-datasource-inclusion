@@ -13,6 +13,14 @@ services:
   app:
     build: .
     command: npm run dev
+    restart: always
+    healthcheck:
+      test: ["CMD", "node", "-e", "console.log(process.memoryUsage().heapUsed)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    mem_limit: 1g
+    memswap_limit: 1g
     volumes:
       - .:/app
       - /app/node_modules
