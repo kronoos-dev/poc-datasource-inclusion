@@ -127,3 +127,151 @@ model tendersAndContracts {
   biddingYear         Int
   originProcess       String
 }
+
+// TCU  Empresas Contratadas Sancionadas
+model sanctionedCompanies {
+  id                    String   @id @default(uuid()) @db.Uuid
+  processNumber         String
+  company               String
+  cnpj                  String
+  contractNumber        String
+  object                String
+  sanctionType          String
+  sanctionDetail        String
+  fineValue             Int
+  debitValue            Int
+  legalFundament        String
+  sicafRegistrationDate DateTime
+  sanctionStartDate     DateTime
+  sanctionEndDate       DateTime
+}
+
+// TCU  Inexigibilidades
+// model unenforceability {
+//   id String @id @default(uuid()) @db.Uuid
+// }
+
+// CVM Processos Sancionadores Julgados
+model CVMSanctioningProceedingsJudged {
+  id                  String   @id @default(uuid()) @db.Uuid
+  processNumber       String
+  summary             String
+  judgmentSessionDate DateTime
+  file                String
+}
+
+// CVM Afastamentos: Penalidades Temporárias
+
+model CVMLeaveTemporaryPenalties {
+  id                     String   @id @default(uuid()) @db.Uuid
+  processNumber          String
+  participant            String
+  decisionType           String
+  CVMjudgementDate       DateTime
+  effectiveDateOfPenalty DateTime
+  leavePeriod            String
+  decision               String
+}
+
+// CVM Proibidos/Impedidos temporariamente - Julgamentos e Termos de Compromisso
+
+model CVMTemporarilyProhibitedOrPrevented {
+  id                     String   @id @default(uuid()) @db.Uuid
+  processNumber          String
+  participant            String
+  cpfCnpj                String
+  decisionType           String
+  CVMjudgementDate       DateTime
+  effectiveDateOfPenalty DateTime
+  leavePeriod            String
+  trialSessionReport     String
+  prohibitionModality    String
+}
+
+// CVM Processo Administrativo Sancionador - Quadro Geral de Inabilitados - QGI
+model CVMGeneralFrameworkOfDisallowedPersons {
+  id                 String   @id @default(uuid()) @db.Uuid
+  pas                String
+  name               String
+  cpf                String
+  penalty            String
+  termInYears        Int
+  startOfPenaltyTerm DateTime
+  endOfPenaltyTerm   DateTime
+}
+
+// CVM Processo Administrativo Sancionador - Quadro Geral de Proibidos de Atuar - QG
+model CVMGeneralFrameworkofPersonsProhibitedFromActing {
+  id                 String   @id @default(uuid()) @db.Uuid
+  pas                String
+  name               String
+  cpfCnpj            String
+  penalty            String
+  termInYears        Int
+  startOfPenaltyTerm DateTime
+  endOfPenaltyTerm   DateTime
+}
+
+// CVM Deliberações
+model CVMDeliberations {
+  id    String   @id @default(uuid()) @db.Uuid
+  title String
+  date  DateTime
+  file  String
+}
+
+// Lista de Devedores da Procuradoria-Geral da Fazenda Nacional - Dívida Ativa Geral (Sistema SIDA)
+model generalActiveDebt_SIDA_System {
+  id                        String   @id @default(uuid()) @db.Uuid
+  cpfCnpj                   String
+  personType                String
+  debtorType                String
+  debtorName                String
+  debtorState               String
+  responsibleUnit           String
+  registrationNumber        Int
+  registrationSituationType String
+  registrationSituation     String
+  mainRevenue               String
+  registrationDate          DateTime
+  indicatorJudged           Boolean
+  consolidatedValue         Int
+}
+
+// Lista de Devedores da Procuradoria-Geral da Fazenda Nacional - Dívida FGTS
+model FGTSDebt {
+  id                        String   @id @default(uuid()) @db.Uuid
+  cpfCnpj                   String
+  personType                String
+  debtorType                String
+  debtorName                String
+  debtorState               String
+  responsibleUnit           String
+  responsibleEntity         String
+  registrationUnit          String
+  registrationNumber        Int
+  registrationSituationType String
+  registrationSituation     String
+  mainRevenue               String
+  registrationDate          DateTime
+  indicatorJudged           Boolean
+  consolidatedValue         Int
+}
+
+// Lista de Devedores da Procuradoria-Geral da Fazenda Nacional - Dívida Previdenciária (Sistema Dívida)
+model socialSecurityDebt_Debt_System {
+  id                        String   @id @default(uuid()) @db.Uuid
+  cpfCnpj                   String
+  personType                String
+  debtorType                String
+  debtorName                String
+  debtorState               String
+  responsibleUnit           String
+  registrationNumber        Int
+  registrationSituationType String
+  registrationSituation     String
+  creditType                String
+  registrationDate          DateTime
+  indicatorJudged           Boolean
+  consolidatedValue         Int
+}
