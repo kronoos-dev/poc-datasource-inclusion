@@ -1,3 +1,4 @@
+import { puppeteerArgs } from '@utils/puppeter.args';
 import AdmZip from 'adm-zip';
 import axios from 'axios';
 import fs from 'fs';
@@ -60,7 +61,7 @@ class GetGeneralActiveDebtData {
   }
 
   async execute() {
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch(puppeteerArgs);
     const page = await browser.newPage();
     await page.goto(`https://www.gov.br/pgfn/pt-br/assuntos/divida-ativa-da-uniao/transparencia-fiscal-1/dados-abertos`);    
 

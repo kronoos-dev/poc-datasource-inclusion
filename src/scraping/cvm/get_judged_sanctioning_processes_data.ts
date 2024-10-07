@@ -1,3 +1,4 @@
+import { puppeteerArgs } from '@utils/puppeter.args';
 import puppeteer from 'puppeteer';
 
 class GetJudgedSanctioningProcessesData {
@@ -5,7 +6,7 @@ class GetJudgedSanctioningProcessesData {
     const initialDateParsed = encodeURIComponent(initialDate)
     const finalDateParsed = encodeURIComponent(finalDate)
 
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch(puppeteerArgs);
     const page = await browser.newPage();
     await page.goto(`https://conteudo.cvm.gov.br/sancionadores/index.html?lastNameShow=&lastName=&filtro=todos&dataInicio=${initialDateParsed}&dataFim=${finalDateParsed}&categoria0=%2Fsancionadores%2Fsancionador%2F&categoria1=%2Fsancionadores%2Fdespachos%2F&buscado=false&contCategoriasCheck=2&itensPagina=50`);
       

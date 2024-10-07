@@ -1,8 +1,9 @@
+import { puppeteerArgs } from '@utils/puppeter.args';
 import puppeteer from 'puppeteer';
 
 class GetCeepData {
   async execute() {        
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch(puppeteerArgs);
     const page = await browser.newPage();
     await page.goto('http://www.servicos.controladoriageral.sp.gov.br/PesquisaCEEP.aspx#gsc.tab=0');
       
