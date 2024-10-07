@@ -17,8 +17,10 @@ RUN npm install -g tsx
 # Copy the rest of the application code.
 COPY . .
 
-# Expose port 3333 (or the port your app uses).
+# Expose port 3333 for the app
 EXPOSE 3333
+
+# Expose port 5432 for the db
 EXPOSE 5432
 
 RUN apt-get update -y && apt-get install -y openssl build-essential libpq-dev
