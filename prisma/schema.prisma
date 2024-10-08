@@ -8,6 +8,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// Cadastro Estadual de Empresas Punidas – CEEP
 model Ceep {
   id                  String   @id @default(uuid()) @db.Uuid
   cnpj                String   @db.VarChar(14)
@@ -18,10 +19,208 @@ model Ceep {
   disagreementDeal    Boolean
 }
 
+// ~ PORTAL DE TRANSPARÊNCIA - TABELAS DE DADOS SUMARIZADOS ~
+//Portal da Transparência - NOVO BOLSA FAMÍLIA
 model benefitBolsaFamilia {
   transferredValue Int
   socialProgram    Int
   id               String @id @default(uuid()) @db.Uuid
+}
+
+// Portal da Transparência - Benefícios ao Cidadão
+// Valor consolidado mensal por programa social e município
+
+model citizenBenefitsSummaryBySocialProgramAndCity {
+  id            String   @id @default(uuid()) @db.Uuid
+  socialProgram String
+  monthYear     DateTime
+  amount        Int
+}
+
+// Valor consolidado anual por beneficiário
+model citizenBenefitsSummaryByBeneficiary {
+  id            String @id @default(uuid()) @db.Uuid
+  name          String
+  socialProgram String
+  nis           String
+  cpf           String
+  city          String
+  year          Int
+  amount        Int
+}
+
+// Portal de Transparência - Cartões de Pagamento 
+model paymentCards {
+  id                      String @id @default(uuid()) @db.Uuid
+  cartType                String
+  superiorDepartmentBody  String
+  linkedEntity            String
+  holderCpf               String
+  holderName              String
+  beneficiaryCpfCnpj      String
+  beneficiaryName         String
+  amountSpentDuringPeriod String
+}
+
+// Portal de Transparência - Convênios e Acordos
+model agreementsAndCovenants {
+  id                     String   @id @default(uuid()) @db.Uuid
+  number                 Int
+  state                  String
+  city                   String
+  status                 String
+  instrumentType         String
+  object                 String
+  superiorDepartmentBody String
+  linkedEntity           String
+  grantor                String
+  convenente             String
+  validityDateStart      DateTime
+  validityDateEnd        DateTime
+  publishingDate         DateTime
+  agreedAmount           Int
+  celebratedValue        Int
+}
+
+// Portal de Transparência - Despesas
+
+// por orgão
+model expensesByDepartmentBody {
+  id                     String   @id @default(uuid()) @db.Uuid
+  monthYear              DateTime
+  superiorDepartmentBody String
+  linkedEntity           String
+  committedValue         Int
+  liquidatedValue        Int
+  paidValue              Int
+  amountLeftToBePaid     Int
+}
+
+// por área de atuação
+model expensesByAreaOfActivity {
+  id                 String   @id @default(uuid()) @db.Uuid
+  monthYear          DateTime
+  areaOfActivity     String
+  subfunction        String
+  committedValue     Int
+  liquidatedValue    Int
+  paidValue          Int
+  amountLeftToBePaid Int
+}
+
+// por programa
+model expensesByProgram {
+  id                 String   @id @default(uuid()) @db.Uuid
+  monthYear          DateTime
+  budgetaryProgram   String
+  budgetaryAction    String
+  committedValue     Int
+  liquidatedValue    Int
+  paidValue          Int
+  amountLeftToBePaid Int
+}
+
+// por classificação contábil da despesa
+model expensesByAccountingClassification {
+  id                              String   @id @default(uuid()) @db.Uuid
+  monthYear                       DateTime
+  superiorExecutiveBody           String
+  linkedExecutingEntity           String
+  managementUnit                  String
+  budgetarySuperiorDepartmentBody String
+  budgetaryEntity                 String
+  budgetaryUnit                   String
+  areaOfActivity                  String
+  subfunction                     String
+  budgetaryProgram                String
+  budgetaryAction                 String
+  governmentProgram               String
+  author                          String
+  expenseGroup                    String
+  expenseElement                  String
+  applicationType                 String
+  committedValue                  Int
+  liquidatedValue                 Int
+  paidValue                       Int
+  amountLeftToBePaid              Int
+}
+
+// por favorecido 
+model expensesByBeneficiary {
+  id               String   @id @default(uuid()) @db.Uuid
+  monthYear        DateTime
+  beneficiary      String
+  beneficiaryType  String
+  beneficiaryState String
+  beneficiaryCity  String
+  amountReceived   Int
+}
+
+// por documentos diários
+model expensesByDailyDocuments {
+  id                     String   @id @default(uuid()) @db.Uuid
+  date                   DateTime
+  document               String
+  location               String
+  expensePhase           String
+  species                String
+  beneficiaryState       String
+  amount                 String
+  ug                     String
+  budgetaryUnit          String
+  departmentBody         String
+  superiorDepartmentBody String
+  expenseGroup           String
+  expenseElement         String
+  expenseType            String
+  budgetaryPlan          String
+  author                 String
+}
+
+// Portal de Transparência - Receitas
+model revenue {
+  id                           String @id @default(uuid()) @db.Uuid
+  year                         Int
+  superiorDepartmentBody       String
+  linkedEntity                 String
+  managementUnit               String
+  economicCategory             String
+  origin                       String
+  species                      String
+  details                      String
+  updatedBudget_predictedValue Int
+  revenue_amountCollected      Int
+  predictedPercentage          String
+  amountReleased               Int
+}
+
+// Portal de Transparência - Emenda Parlamentar 
+
+model parliamentaryAmendment {
+  id                           String @id @default(uuid()) @db.Uuid
+  amendmentYear                Int
+  amendmentType                String
+  amendmentAuthor              String
+  amendmentNumber              Int
+  expenseLocation              String
+  function                     String
+  subfunction                  String
+  budgetaryProgram             String
+  budgetaryAction              String
+  budgetaryPlan                String
+  amendmentCode                Int
+  committedValue               Int
+  liquidatedValue              Int
+  paidValue                    Int
+  amountLeftToBePaidRegistered Int
+  amountLeftToBePaidCancelled  Int
+  amountLeftToBePaid_Paid      Int
+}
+
+// ~ PORTAL DE TRANSPARÊNCIA - TABELAS DE DADOS NÃO SUMARIZADOS ~
+
+model brazilAid {
+  id String @id @default(uuid()) @db.Uuid
 }
 
 model federalGovernmentPaymentCard {
