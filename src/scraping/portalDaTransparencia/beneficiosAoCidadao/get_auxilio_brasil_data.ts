@@ -49,7 +49,7 @@ class GetAuxilioBrasilData {
       return municipios
     });
 
-    // console.log(listaMunicipios?.length)
+    console.log(listaMunicipios?.length)
     // 5597
   
     await browser.close();
@@ -69,10 +69,12 @@ class GetAuxilioBrasilData {
             'chave-api-dados': process.env.GOV_KEY
           }
         })
+
+        console.log(data)
   
         auxilioBrasilData.push(data)
       } catch (error) {
-        // console.error(error);        
+        console.error(error);        
       }
     }
 

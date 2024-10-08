@@ -1,3 +1,4 @@
+import { GetCelebratedDealsData } from "./cgu/get_celebrated_deals"
 
 async function scrapeData() {
   // CVM
@@ -13,18 +14,23 @@ async function scrapeData() {
   // -> Beneficios ao cidadão
   // const getAuxilioBrasilData = new GetAuxilioBrasilData()
   
+  // CGU  
+  const getCelebratedDealsData = new GetCelebratedDealsData()
+  
 
   try {
     // const judgedSanctioningProcessesData = await getJudgedSanctioningProcessesData.execute({});
     // const ceepData = await getCeepData.execute()
     // const generalActiveDebtData = await getGeneralActiveDebtData.execute()
     // const auxilioBrasilData = await getAuxilioBrasilData.execute()
+    const celebratedDealsData = await getCelebratedDealsData.execute()
 
     //TODO, salvar dados
     // console.log('judgedSanctioningProcessesData:', judgedSanctioningProcessesData)
     // console.log('ceepData:', ceepData)
     // console.log('generalActiveDebtData:', generalActiveDebtData)
     // console.log('auxilioBrasilData:', auxilioBrasilData)
+    console.log('celebratedDealsData:', celebratedDealsData)
   } catch (error) {
     throw new Error(error as any)
   }
