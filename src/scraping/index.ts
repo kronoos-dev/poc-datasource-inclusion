@@ -1,26 +1,30 @@
-import { GetCeepData } from "./ceep/get_ceep_data";
-import { GetJudgedSanctioningProcessesData } from "./cvm/get_judged_sanctioning_processes_data";
-import { GetGeneralActiveDebtData } from "./pgfn/get_general_active_debt_data";
 
 async function scrapeData() {
   // CVM
-  const getJudgedSanctioningProcessesData = new GetJudgedSanctioningProcessesData()
-  
-  // CEEP
-  const getCeepData = new GetCeepData()
+  // const getJudgedSanctioningProcessesData = new GetJudgedSanctioningProcessesData()
   
   // PGFN
-  const getGeneralActiveDebtData = new GetGeneralActiveDebtData()
+  // const getGeneralActiveDebtData = new GetGeneralActiveDebtData()
+
+  // CEEP
+  // const getCeepData = new GetCeepData()
+  
+  // Portal da transparência
+  // -> Beneficios ao cidadão
+  // const getAuxilioBrasilData = new GetAuxilioBrasilData()
+  
 
   try {
-    const judgedSanctioningProcessesData = await getJudgedSanctioningProcessesData.execute({});
-    const ceepData = await getCeepData.execute()
-    const generalActiveDebtData = await getGeneralActiveDebtData.execute()
+    // const judgedSanctioningProcessesData = await getJudgedSanctioningProcessesData.execute({});
+    // const ceepData = await getCeepData.execute()
+    // const generalActiveDebtData = await getGeneralActiveDebtData.execute()
+    // const auxilioBrasilData = await getAuxilioBrasilData.execute()
 
     //TODO, salvar dados
-    console.log('judgedSanctioningProcessesData:', judgedSanctioningProcessesData)
-    console.log('ceepData:', ceepData)
-    console.log('generalActiveDebtData:', generalActiveDebtData)
+    // console.log('judgedSanctioningProcessesData:', judgedSanctioningProcessesData)
+    // console.log('ceepData:', ceepData)
+    // console.log('generalActiveDebtData:', generalActiveDebtData)
+    // console.log('auxilioBrasilData:', auxilioBrasilData)
   } catch (error) {
     throw new Error(error as any)
   }
