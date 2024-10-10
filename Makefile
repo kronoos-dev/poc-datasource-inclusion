@@ -14,6 +14,9 @@ up-b:
 
 down:
 	docker compose down
+
+scrapple:
+	docker compose run app npm run scrapple
  
 shell:
 	@docker exec -it $(CONTAINER_NAME) \
