@@ -363,7 +363,7 @@ model CVMSanctioningProceedingsJudged {
 
 model CVMLeaveTemporaryPenalties {
   id                     String   @id @default(uuid()) @db.Uuid
-  processNumber          String
+  processId              String
   participant            String
   decisionType           String
   CVMjudgementDate       DateTime
@@ -376,7 +376,7 @@ model CVMLeaveTemporaryPenalties {
 
 model CVMTemporarilyProhibitedOrPrevented {
   id                     String   @id @default(uuid()) @db.Uuid
-  processNumber          String
+  processId              String
   participant            String
   cpfCnpj                String
   decisionType           String
