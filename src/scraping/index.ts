@@ -34,6 +34,10 @@ async function scrapeData() {
     // const judgedSanctioningProcessesData =
     //   await getJudgedSanctioningProcessesData.execute({});
     const deliberationsData = await getDeliberationsData.execute({});
+    // const generalFrameworkOfDisallowedPersonsData =
+    //   await getGeneralFrameworkOfDisallowedPersonsData.execute();
+    // const generalFrameworkOfPersonsProhibitedFromActingData =
+    //   await getGeneralFrameworkOfPersonsProhibitedFromActingData.execute();
     // const ceepData = await getCeepData.execute()
     // const generalActiveDebtData = await getGeneralActiveDebtData.execute()
     // const auxilioBrasilData = await getAuxilioBrasilData.execute()
@@ -41,6 +45,11 @@ async function scrapeData() {
 
     //TODO, salvar dados
     console.log("deliberationsData:", deliberationsData);
+
+    // console.log(
+    //   "generalFrameworkOfPersonsProhibitedFromActingData:",
+    //   generalFrameworkOfPersonsProhibitedFromActingData
+    // );
     // console.log('ceepData:', ceepData)
     // console.log('generalActiveDebtData:', generalActiveDebtData)
     // console.log('auxilioBrasilData:', auxilioBrasilData)
