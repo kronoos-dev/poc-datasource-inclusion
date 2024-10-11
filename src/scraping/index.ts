@@ -1,4 +1,4 @@
-import { GetFgtsDebtData } from "./pgfn/get_fgts_debt_data";
+import { GetSocialSecurityData } from "./pgfn/get_social_security_data";
 
 async function scrapeData() {
   // CVM
@@ -15,7 +15,8 @@ async function scrapeData() {
 
   // PGFN
   // const getGeneralActiveDebtData = new GetGeneralActiveDebtData()
-  const getFgtsDebtData = new GetFgtsDebtData()
+  // const getFgtsDebtData = new GetFgtsDebtData()
+  const getSocialSecurityData = new GetSocialSecurityData()
 
   // CEEP
   // const getCeepData = new GetCeepData()
@@ -32,12 +33,14 @@ async function scrapeData() {
     // const deliberationsData = await deliberationsData.execute({});
     // const ceepData = await getCeepData.execute()
     // const generalActiveDebtData = await getGeneralActiveDebtData.execute()
-    const fgtsDebtData = await getFgtsDebtData.execute()
+    // const fgtsDebtData = await getFgtsDebtData.execute()
+    const socialSecurityData = await getSocialSecurityData.execute()
     // const auxilioBrasilData = await getAuxilioBrasilData.execute()
     //const celebratedDealsData = await getCelebratedDealsData.execute();
 
     //TODO, salvar dados
-    console.log("fgtsDebtData:", fgtsDebtData);
+    // console.log("fgtsDebtData:", fgtsDebtData);
+    console.log("socialSecurityData:", socialSecurityData);
     // console.log('ceepData:', ceepData)
     // console.log('generalActiveDebtData:', generalActiveDebtData)
     // console.log('auxilioBrasilData:', auxilioBrasilData)
