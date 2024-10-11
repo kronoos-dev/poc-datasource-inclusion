@@ -13,7 +13,7 @@ class GetGeneralFrameworkOfPersonsProhibitedFromActingData {
     const page = await browser.newPage();
     await page.goto(url);
 
-    const content = await page.$$eval("table.table-bordered", (items) => {
+    const content = await page.$$eval("table.table-bordered tr", (items) => {
       return items.map((item) => {
         const [
           pas,
@@ -24,6 +24,8 @@ class GetGeneralFrameworkOfPersonsProhibitedFromActingData {
           startOfPenaltyTerm,
           endOfPenaltyTerm,
         ] = item.querySelectorAll("td");
+
+        if (!pas) return;
 
         return {
           pas: `${pas.innerText}`,
@@ -39,7 +41,7 @@ class GetGeneralFrameworkOfPersonsProhibitedFromActingData {
 
     await browser.close();
 
-    return content;
+    return content.filter(Boolean);
   }
 }
 
