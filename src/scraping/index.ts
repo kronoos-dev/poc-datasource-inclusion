@@ -1,8 +1,4 @@
-import { GetCelebratedDealsData } from "./cgu/get_celebrated_deals";
-import { GetDeliberationsData } from "./cvm/get_deliberations_data";
-import { GetGeneralFrameworkOfDisallowedPersonsData } from "./cvm/get_general_framework_of_disallowed_persons_data";
-import { GetGeneralFrameworkOfPersonsProhibitedFromActingData } from "./cvm/get_general_framework_of_persons_prohibited_from_acting_data";
-import { GetJudgedSanctioningProcessesData } from "./cvm/get_judged_sanctioning_processes_data";
+import { GetFgtsDebtData } from "./pgfn/get_fgts_debt_data";
 
 async function scrapeData() {
   // CVM
@@ -15,10 +11,11 @@ async function scrapeData() {
   // const getGeneralFrameworkOfPersonsProhibitedFromActingData =
   //   new GetGeneralFrameworkOfPersonsProhibitedFromActingData();
 
-  const getDeliberationsData = new GetDeliberationsData();
+  // const getDeliberationsData = new GetDeliberationsData();
 
   // PGFN
   // const getGeneralActiveDebtData = new GetGeneralActiveDebtData()
+  const getFgtsDebtData = new GetFgtsDebtData()
 
   // CEEP
   // const getCeepData = new GetCeepData()
@@ -31,16 +28,16 @@ async function scrapeData() {
   //const getCelebratedDealsData = new GetCelebratedDealsData()
 
   try {
-    // const judgedSanctioningProcessesData =
-    //   await getJudgedSanctioningProcessesData.execute({});
-    const deliberationsData = await getDeliberationsData.execute({});
+    // const judgedSanctioningProcessesData = await getJudgedSanctioningProcessesData.execute({});
+    // const deliberationsData = await deliberationsData.execute({});
     // const ceepData = await getCeepData.execute()
     // const generalActiveDebtData = await getGeneralActiveDebtData.execute()
+    const fgtsDebtData = await getFgtsDebtData.execute()
     // const auxilioBrasilData = await getAuxilioBrasilData.execute()
     //const celebratedDealsData = await getCelebratedDealsData.execute();
 
     //TODO, salvar dados
-    console.log("deliberationsData:", deliberationsData);
+    console.log("fgtsDebtData:", fgtsDebtData);
     // console.log('ceepData:', ceepData)
     // console.log('generalActiveDebtData:', generalActiveDebtData)
     // console.log('auxilioBrasilData:', auxilioBrasilData)
