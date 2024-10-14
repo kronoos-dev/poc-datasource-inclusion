@@ -1,9 +1,8 @@
-import { LoadCeepData } from "./ceep/loadCeepData"
+import { loadCeepData } from "./ceep/loadCeepData"
 
 function loadData() {
   try {
-    new LoadCeepData()
-      .execute() 
+    loadCeepData() 
   } catch (error) {
     
   }
