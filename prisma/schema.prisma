@@ -10,15 +10,16 @@ datasource db {
 
 // Cadastro Estadual de Empresas Punidas – CEEP
 model Ceep {
-  id                  String   @id @default(uuid()) @db.Uuid
-  cnpj                String   @db.VarChar(14)
+  id                  String    @id @default(uuid()) @db.Uuid
+  cnpj                String    @db.VarChar(14)
   corporateName       String
+  link                String    @unique
   sanctionDescription String
   sanctionDate        DateTime
   leeniencyAgreement  Boolean
   disagreementDeal    Boolean
 }
-
+ 
 // ~ PORTAL DE TRANSPARÊNCIA - TABELAS DE DADOS SUMARIZADOS ~
 //Portal da Transparência - NOVO BOLSA FAMÍLIA
 model benefitBolsaFamilia {

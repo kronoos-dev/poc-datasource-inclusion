@@ -11,21 +11,18 @@ class GetCeepData {
       const detailsPagePrefix = "http://www.servicos.controladoriageral.sp.gov.br"
 
       return rows.map(col => {
+        const [ , cnpj, corporateName, sanctionDescription, sanctionDate, leeniencyAgreement, disagreementDeal ] = col.innerText.split('\t')
+        const achorCell = col.querySelector('a')
 
-               
-          const [ , cnpj, corporateName, sanctionDescription, sanctionDate, leeniencyAgreement, disagreementDeal ] = col.innerText.split('\t')
-          const achorCell = col.querySelector('a')
-
-          return {
-            "link" : `${detailsPagePrefix}/${achorCell?.getAttribute('href')}`,
-            cnpj,
-            corporateName,
-            sanctionDescription,
-            sanctionDate,
-            leeniencyAgreement,
-            disagreementDeal
-          }
-        
+        return {
+          link : `${detailsPagePrefix}/${achorCell?.getAttribute('href')}`,
+          cnpj,
+          corporateName,
+          sanctionDescription,
+          sanctionDate,
+          leeniencyAgreement,
+          disagreementDeal
+        }
       });
     });
 

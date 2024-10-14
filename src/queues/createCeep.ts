@@ -12,7 +12,8 @@ createCeepQueue.process(async (job) => {
     sanctionDescription,
     sanctionDate,
     leeniencyAgreement,
-    disagreementDeal
+    disagreementDeal,
+    link
   } = job.data
 
   const ceepRepository = PrismaCeepRepository.getInstance();
@@ -25,7 +26,8 @@ createCeepQueue.process(async (job) => {
       sanctionDescription,
       sanctionDate,
       leeniencyAgreement,
-      disagreementDeal
+      disagreementDeal,
+      link
     })
 
     console.table(result)

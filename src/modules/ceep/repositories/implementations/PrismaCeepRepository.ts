@@ -27,6 +27,7 @@ class PrismaCeepRepository implements ICeepsRepository {
     sanctionDate,
     leeniencyAgreement,
     disagreementDeal,
+    link
   }: Prisma.CeepCreateInput): Promise<Ceep> {
     
     const newCeep = await prisma.ceep.create({
@@ -37,6 +38,7 @@ class PrismaCeepRepository implements ICeepsRepository {
         sanctionDate,
         leeniencyAgreement,
         disagreementDeal,
+        link
       },
     });
 

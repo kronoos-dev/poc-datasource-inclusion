@@ -11,6 +11,7 @@ interface CeepCreateInputPayload {
   sanctionDate: Date | string;
   leeniencyAgreement: string;
   disagreementDeal: string;
+  link: string;
 }
 
 class CreateCeepUseCase {
@@ -23,6 +24,7 @@ class CreateCeepUseCase {
     sanctionDate,
     leeniencyAgreement,
     disagreementDeal,
+    link
   }: CeepCreateInputPayload) {
     const ceep = this.ceepsRepository.create({
       cnpj: removeSeparatorCnpj(cnpj),
@@ -31,6 +33,7 @@ class CreateCeepUseCase {
       sanctionDate: getDateTimeFromString(sanctionDate as string),
       leeniencyAgreement: stringPortugueseToBoolean(leeniencyAgreement),
       disagreementDeal: stringPortugueseToBoolean(disagreementDeal),
+      link
     });
 
     return ceep;
