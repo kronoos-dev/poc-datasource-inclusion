@@ -28,6 +28,7 @@ class PrismaCeepRepository implements ICeepsRepository {
     leeniencyAgreement,
     disagreementDeal,
   }: Prisma.CeepCreateInput): Promise<Ceep> {
+    
     const newCeep = await prisma.ceep.create({
       data: {
         cnpj,

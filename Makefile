@@ -15,8 +15,14 @@ up-b:
 down:
 	docker compose down
 
+prisma-setup:
+	docker compose exec $(CONTAINER_NAME) npx prisma migrate reset
+
 scrapple:
-	docker compose run app npm run scrapple
+	docker compose run $(CONTAINER_NAME) npm run scrapple
+
+import-sources:
+	docker compose exec $(CONTAINER_NAME) npm run import-sources
  
 shell:
 	@docker exec -it $(CONTAINER_NAME) \
@@ -30,11 +36,11 @@ clean:
 	@mkdir -p tmp/pids && touch tmp/pids/.keep
 
 reset-app:
-	docker compose down app && docker compose up -d app
+	docker compose down $(CONTAINER_NAME) && docker compose up -d $(CONTAINER_NAME)
 
 reset-db:
 	docker compose down db && docker compose up -d db
 
 reset-prisma-studio:
-	docker compose down prisma-studio && docker compose up -d prisma-studio
+	docker compose down prisma-studio && docker compose up -d prisma-studio --force-recreate
 

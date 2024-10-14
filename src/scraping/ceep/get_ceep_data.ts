@@ -7,13 +7,12 @@ class GetCeepData {
     const page = await browser.newPage();
     await page.goto('http://www.servicos.controladoriageral.sp.gov.br/PesquisaCEEP.aspx#gsc.tab=0');
       
-    const [ dataElements ] = await page.$$eval('.borderCEEP tbody', async rows => {
+    const dataElements = await page.$$eval('.borderCEEP tbody tr', async rows => {
       const detailsPagePrefix = "http://www.servicos.controladoriageral.sp.gov.br"
 
-      return rows.map(row => {
-        const cells = row.querySelectorAll('tr');
+      return rows.map(col => {
 
-        return Array.from(cells).map(col => {       
+               
           const [ , cnpj, corporateName, sanctionDescription, sanctionDate, leeniencyAgreement, disagreementDeal ] = col.innerText.split('\t')
           const achorCell = col.querySelector('a')
 
@@ -26,9 +25,11 @@ class GetCeepData {
             leeniencyAgreement,
             disagreementDeal
           }
-        });
+        
       });
     });
+
+    dataElements.shift()
   
     await browser.close();
 
