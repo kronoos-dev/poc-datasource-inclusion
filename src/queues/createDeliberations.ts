@@ -1,7 +1,7 @@
 import { PrismaCeepRepository } from "@modules/ceep/repositories/implementations/PrismaCeepRepository";
 import { PrismaDeliberationsRepository } from "@modules/ceep/repositories/implementations/PrismaDeliberationsRepository";
 import { CreateCeepUseCase } from "@modules/ceep/usecases/createCeep/CreateCeepUseCase";
-import { CreateCVMDeliberationUseCase } from "@modules/ceep/usecases/cvm/createDeliberation/CreateDeliberationUseCase";
+import { CreateCVMDeliberationUseCase } from "@modules/ceep/usecases/createDeliberation/CreateDeliberationUseCase";
 import Bull from "bull";
 
 const createDeliberationsQueue = new Bull(
