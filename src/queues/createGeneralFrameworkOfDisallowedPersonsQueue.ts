@@ -45,6 +45,8 @@ createGeneralFrameworkOfDisallowedPersonsQueue.process(async (job) => {
   }
 });
 
-console.log("Bull - createDeliberations - Queue is running...");
+console.log(
+  "Bull - reateGeneralFrameworkOfDisallowedPersons - Queue is running..."
+);
 
 export { createGeneralFrameworkOfDisallowedPersonsQueue };
