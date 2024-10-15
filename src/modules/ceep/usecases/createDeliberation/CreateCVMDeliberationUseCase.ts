@@ -20,7 +20,7 @@ class CreateCVMDeliberationUseCase {
     pdfUrl,
     docUrl,
   }: CVMDeliberationCreateInputPayload) {
-    const ceep = this.deliberationsRepository.create({
+    const deliberation = this.deliberationsRepository.create({
       title,
       description,
       dateJudgementSession: getDateTimeFromString(
@@ -30,7 +30,7 @@ class CreateCVMDeliberationUseCase {
       docUrl,
     });
 
-    return ceep;
+    return deliberation;
   }
 }
 
