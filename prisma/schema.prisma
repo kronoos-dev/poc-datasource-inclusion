@@ -10,16 +10,16 @@ datasource db {
 
 // Cadastro Estadual de Empresas Punidas – CEEP
 model Ceep {
-  id                  String    @id @default(uuid()) @db.Uuid
-  cnpj                String    @db.VarChar(14)
+  id                  String   @id @default(uuid()) @db.Uuid
+  cnpj                String   @db.VarChar(14)
   corporateName       String
-  link                String    @unique
+  link                String   @unique
   sanctionDescription String
   sanctionDate        DateTime
   leeniencyAgreement  Boolean
   disagreementDeal    Boolean
 }
- 
+
 // ~ PORTAL DE TRANSPARÊNCIA - TABELAS DE DADOS SUMARIZADOS ~
 //Portal da Transparência - NOVO BOLSA FAMÍLIA
 model benefitBolsaFamilia {
@@ -414,10 +414,12 @@ model CVMGeneralFrameworkofPersonsProhibitedFromActing {
 
 // CVM Deliberações
 model CVMDeliberations {
-  id    String   @id @default(uuid()) @db.Uuid
-  title String
-  date  DateTime
-  file  String
+  id                   String   @id @default(uuid()) @db.Uuid
+  title                String
+  description          String
+  dateJudgementSession DateTime
+  pdfUrl               String
+  docUrl               String
 }
 
 // Lista de Devedores da Procuradoria-Geral da Fazenda Nacional - Dívida Ativa Geral (Sistema SIDA)
