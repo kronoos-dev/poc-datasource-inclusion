@@ -1,11 +1,6 @@
 import { prisma } from "@lib/prisma";
-import {
-  Prisma,
-  CVMDeliberations,
-  CVMGeneralFrameworkOfDisallowedPersons,
-} from "@prisma/client";
+import { Prisma, CVMGeneralFrameworkOfDisallowedPersons } from "@prisma/client";
 
-import { IDeliberationsRepository } from "../IDeliberationsRepository";
 import { IGeneralFrameworkOfDisallowedPersonsRepository } from "../IGeneralFrameworkOfDisallowedPersonsRepository";
 
 class PrismaGeneralFrameworkOfDisallowedPersonsRepository

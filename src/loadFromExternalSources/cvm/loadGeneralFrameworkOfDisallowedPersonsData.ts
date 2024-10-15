@@ -1,4 +1,4 @@
-import { createDeliberationsQueue } from "queues/createDeliberations";
+import { createGeneralFrameworkOfDisallowedPersonsQueue } from "queues/createGeneralFrameworkOfDisallowedPersons";
 import { GetGeneralFrameworkOfDisallowedPersonsData } from "scraping/cvm/get_general_framework_of_disallowed_persons_data";
 
 class LoadGeneralFrameworkOfDisallowedPersonsData {
@@ -12,7 +12,7 @@ class LoadGeneralFrameworkOfDisallowedPersonsData {
     console.log(generalFrameworkOfDisallowedPersonsData);
 
     generalFrameworkOfDisallowedPersonsData.map((data) => {
-      createDeliberationsQueue.add(data);
+      createGeneralFrameworkOfDisallowedPersonsQueue.add(data);
     });
   }
 }

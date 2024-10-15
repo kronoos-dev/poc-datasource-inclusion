@@ -46,7 +46,7 @@ createGeneralFrameworkOfDisallowedPersonsQueue.process(async (job) => {
 });
 
 console.log(
-  "Bull - reateGeneralFrameworkOfDisallowedPersons - Queue is running..."
+  "Bull - createGeneralFrameworkOfDisallowedPersons - Queue is running..."
 );
 
 export { createGeneralFrameworkOfDisallowedPersonsQueue };
