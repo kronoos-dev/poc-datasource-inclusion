@@ -1,8 +1,8 @@
 import { portalDaTransparenciaQueue } from "queues/portalDaTransparenciaDataInclusion";
-import { GetAuxilioBrasilData } from "scraping/portalDaTransparencia/beneficiosAoCidadao/get_auxilio_brasil_data";
+import { GetBeneficioAoCidadaoData } from "scraping/portalDaTransparencia/beneficiosAoCidadao";
 
 async function loadAuxilioBrasilData() {
-  const getAuxilioBrasilData = new GetAuxilioBrasilData()
+  const getAuxilioBrasilData = new GetBeneficioAoCidadaoData('01/10/2021')
 
   const auxilioBrasilData = await getAuxilioBrasilData.execute()
 

@@ -1,4 +1,4 @@
-import { GetSocialSecurityData } from "./pgfn/get_social_security_data";
+import { GetAuxilioBrasilData } from "./portalDaTransparencia/beneficiosAoCidadao/get_auxilio_brasil_data";
 
 async function scrapeData() {
   // CVM
@@ -16,14 +16,14 @@ async function scrapeData() {
   // PGFN
   // const getGeneralActiveDebtData = new GetGeneralActiveDebtData()
   // const getFgtsDebtData = new GetFgtsDebtData()
-  const getSocialSecurityData = new GetSocialSecurityData()
+  // const getSocialSecurityData = new GetS?ocialSecurityData()
 
   // CEEP
   // const getCeepData = new GetCeepData()
 
   // Portal da transparência
   // -> Beneficios ao cidadão
-  // const getAuxilioBrasilData = new GetAuxilioBrasilData()
+  const getAuxilioBrasilData = new GetAuxilioBrasilData()
 
   // CGU
   //const getCelebratedDealsData = new GetCelebratedDealsData()
@@ -33,7 +33,7 @@ async function scrapeData() {
     // const deliberationsData = await deliberationsData.execute({});
     // const judgedSanctioningProcessesData =
     //   await getJudgedSanctioningProcessesData.execute({});
-    const deliberationsData = await getDeliberationsData.execute({});
+    // const deliberationsData = await getDeliberationsData.execute({});
     // const generalFrameworkOfDisallowedPersonsData =
     //   await getGeneralFrameworkOfDisallowedPersonsData.execute();
     // const generalFrameworkOfPersonsProhibitedFromActingData =
@@ -41,14 +41,14 @@ async function scrapeData() {
     // const ceepData = await getCeepData.execute()
     // const generalActiveDebtData = await getGeneralActiveDebtData.execute()
     // const fgtsDebtData = await getFgtsDebtData.execute()
-    const socialSecurityData = await getSocialSecurityData.execute()
-    // const auxilioBrasilData = await getAuxilioBrasilData.execute()
+    // const socialSecurityData = await getSocialSecurityData.execute()
+    const auxilioBrasilData = await getAuxilioBrasilData.execute()
     //const celebratedDealsData = await getCelebratedDealsData.execute();
 
     //TODO, salvar dados
     // console.log("fgtsDebtData:", fgtsDebtData);
-    console.log("socialSecurityData:", socialSecurityData);
-    console.log("deliberationsData:", deliberationsData);
+    // console.log("socialSecurityData:", socialSecurityData);
+    // console.log("deliberationsData:", deliberationsData);
 
     // console.log(
     //   "generalFrameworkOfPersonsProhibitedFromActingData:",
@@ -56,7 +56,7 @@ async function scrapeData() {
     // );
     // console.log('ceepData:', ceepData)
     // console.log('generalActiveDebtData:', generalActiveDebtData)
-    // console.log('auxilioBrasilData:', auxilioBrasilData)
+    console.log('auxilioBrasilData:', auxilioBrasilData)
     //console.log("celebratedDealsData:", celebratedDealsData);
   } catch (error) {
     throw new Error(error as any);

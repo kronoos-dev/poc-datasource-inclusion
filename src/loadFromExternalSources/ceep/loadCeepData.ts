@@ -6,8 +6,6 @@ async function loadCeepData() {
 
   const ceepData = await getCeepData.execute()
 
-  console.log(ceepData)
-
   ceepData.map(( data ) => {
     createCeepQueue.add(data)
   })

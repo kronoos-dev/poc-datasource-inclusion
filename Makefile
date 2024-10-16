@@ -19,7 +19,7 @@ prisma-setup:
 	docker compose exec $(CONTAINER_NAME) npx prisma migrate reset
 
 scrapple:
-	docker compose run $(CONTAINER_NAME) npm run scrapple
+	docker compose exec $(CONTAINER_NAME) npm run scrapple
 
 import-sources:
 	docker compose exec $(CONTAINER_NAME) npm run import-sources

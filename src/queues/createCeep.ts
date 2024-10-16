@@ -6,7 +6,7 @@ import Bull from 'bull';
 const createCeepQueue = new Bull('createCeep', process.env.REDIS_URL || 'redis://localhost:6379');
 
 createCeepQueue.process(async (job) => {
-  const { 
+  const {
     cnpj,
     corporateName,
     sanctionDescription,

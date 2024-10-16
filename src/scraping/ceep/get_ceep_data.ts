@@ -1,7 +1,7 @@
 import { puppeteerArgs } from '@utils/puppeter.args';
 import puppeteer from 'puppeteer';
 
-class GetCeepData {
+class   GetCeepData {
   async execute() {        
     const browser = await puppeteer.launch(puppeteerArgs);
     const page = await browser.newPage();

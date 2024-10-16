@@ -2,3 +2,5 @@ node_modules
 # Keep environment variables out of version control
 .env
 assets
+src/jsonFileDB/database/**/*.json
+src/jsonFileDB/database/NOVO_BOLSA_FAMILIA/2023/01.json
