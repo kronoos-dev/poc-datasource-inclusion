@@ -24,17 +24,20 @@ portalDaTransparenciaQueue.process(async ({ data } ) => {
 
   try {
 
-   const { data } = await axios.get(`${process.env.IBGE_API_URL}${EndpointUrlEnum[resource]}`, {
+   const { data, status } = await axios.get(`${process.env.IBGE_API_URL}${EndpointUrlEnum[resource]}`, {
     headers: {
       'chave-api-dados': process.env.GOV_KEY
     },
-    
     params: {
       mesAno,
-      codigoIbge: codigoIbge,
+      codigoIbge,
       pagina: 1
     }
   })
+
+  if(status === 401) {
+    throw new Error(`Ops, algo deu errado: ${data}`);
+  }
 
   const [ portalDaTransparenciaData ] = data
 
@@ -47,7 +50,7 @@ portalDaTransparenciaQueue.process(async ({ data } ) => {
     db.filter(( item: any ) => item.id !== portalDaTransparenciaData.id)
     db.push(portalDaTransparenciaData);
 
-     await writeDB(db, resource, mesAno); 
+    await writeDB(db, resource, mesAno); 
 
     console.debug('dados do portalDaTransparenciaData salvos com sucesso!')
   } else {
@@ -55,7 +58,7 @@ portalDaTransparenciaQueue.process(async ({ data } ) => {
   }
 
   } catch (error) {
-    console.error(error) 
+    throw new Error(error as any);
   }
 });
 

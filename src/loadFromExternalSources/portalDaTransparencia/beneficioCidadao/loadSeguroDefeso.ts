@@ -7,7 +7,7 @@ async function loadSeguroDefesoData() {
   const seguroDefesoData = await beneficioAoCidadaoData.execute()
 
   for (const seguroDefesoDataItem of seguroDefesoData) {
-    const { availableDate, codigoIbge } = SeguroDefesoDataItem
+    const { availableDate, codigoIbge } = seguroDefesoDataItem
 
     portalDaTransparenciaQueue.add({ availableDate, codigoIbge, resource:"SEGURO_DEFESO" })
   }

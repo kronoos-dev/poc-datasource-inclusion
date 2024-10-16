@@ -18,7 +18,7 @@ async function readDB(resource: EndpointUrlEnumStrings, period: string) {
     mkdirSync(path.join(__dirname, resource, year))
   }
 
-  if (!existsSync(fullPathW)) {
+  if (!existsSync(fullPath)) {
     fs.writeFile(fullPath, '[]', 'utf8')
   }
 

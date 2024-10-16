@@ -1,5 +1,4 @@
-import puppeteer from 'puppeteer';
-import { puppeteerArgs } from './puppeter.args';
+import axios from 'axios';
 
 
 type MunicipioType = {
@@ -8,31 +7,24 @@ type MunicipioType = {
 }
 
 async function getMunicipios() {
-  const url = 'https://www.ibge.gov.br/explica/codigos-dos-municipios.php'
+  try {
+    const { data } = await axios.get('https://servicodados.ibge.gov.br/api/v1/localidades/municipios')
 
-  const browser = await puppeteer.launch(puppeteerArgs);
-  const page = await browser.newPage();
-  await page.goto(url);
+    let listMunicipios: MunicipioType[] = []
 
-  return await page.$$eval('.container-codigos .container-uf', async tables => {
-    let municipios: MunicipioType[] = []
+    for (const municipioData of data) {
+      const { id, nome } = municipioData
 
-    for (const table of tables) {        
-      const cells = table.querySelectorAll('tbody tr');
-
-      for (const col of Array.from(cells)) {
-        const municipio = col.querySelector('td a')?.textContent as string
-        const codigo = col.querySelector('td.numero')?.textContent as unknown as number
-
-        municipios.push({
-          municipio,
-          codigo
-        })
-      } 
-          
+      listMunicipios.push({
+        codigo: id,
+        municipio: nome
+      })
     }
-    return municipios
-  });
+
+    return listMunicipios
+  } catch (error:any) { 
+    throw new Error(error);
+  }
 }
 
 export { getMunicipios };
