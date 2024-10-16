@@ -6,6 +6,9 @@ build:
 up:
 	docker compose up
 
+up-d:
+	docker compose up -d
+
 up-w:
 	docker compose up --watch
 
@@ -16,7 +19,7 @@ down:
 	docker compose down
 
 prisma-setup:
-	docker compose exec $(CONTAINER_NAME) npx prisma migrate reset
+	docker compose exec $(CONTAINER_NAME) npx prisma migrate reset && npx prisma generate
 
 scrapple:
 	docker compose exec $(CONTAINER_NAME) npm run scrapple
@@ -27,6 +30,9 @@ import-sources:
 shell:
 	@docker exec -it $(CONTAINER_NAME) \
 	sh -c "/bin/bash || /bin/sh"
+	
+stop:
+	docker ps -aq | xargs docker stop | xargs docker rm
 	
 clean:
 	@docker compose down
