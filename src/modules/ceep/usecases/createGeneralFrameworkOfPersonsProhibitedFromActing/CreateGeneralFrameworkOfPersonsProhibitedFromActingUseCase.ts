@@ -32,9 +32,9 @@ class CreateCVMGeneralFrameworkOfPersonsProhibitedFromActingUseCase {
         name,
         cpfCnpj,
         penalty,
-        termInYears,
-        startOfPenaltyTerm: getDateTimeFromString(startOfPenaltyTerm as string),
-        endOfPenaltyTerm: getDateTimeFromString(endOfPenaltyTerm as string),
+        termInYears: Number(termInYears),
+        startOfPenaltyTerm: getDateTimeFromString(startOfPenaltyTerm as string, '-'),
+        endOfPenaltyTerm: getDateTimeFromString(endOfPenaltyTerm as string, '-'),
       });
 
     return generalFrameworkOfPersonsProhibitedFromActing;
