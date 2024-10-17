@@ -23,7 +23,7 @@ class GetBeneficioAoCidadaoData {
 
     referência: https://portaldatransparencia.gov.br/api-de-dados/
   */
-  // https://api.portaldatransparencia.gov.br/swagger-ui/index.html#/Benef%C3%ADcios/SafraPorMunicipio
+  // https://api.portaldatransparencia.gov.br/swagger-ui/index.html#/Benef%C3%ADcios
 
   async execute() {
     const availableDates = handleFindBenefitAvailableDateRange(getDateTimeFromString(this.startDate))
