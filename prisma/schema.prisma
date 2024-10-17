@@ -285,13 +285,13 @@ model civilDefensePaymentCard {
   transactionValue           Int
 }
 
-// Acordos de Leniência - Controladoria-Geral da União
-model leniencyAgreements {
-  id                          String   @id @default(uuid()) @db.Uuid
-  year                        Int
-  company                     String
-  agreedValue                 Int
-  agreementsAnnexesAmendments String[]
+// Acordos de Leniência - Acordos Celebrados - Controladoria-Geral da União
+model celebratedDeals {
+  id          String   @id @default(uuid()) @db.Uuid
+  year        Int
+  companyName String
+  agreedValue Int
+  attachments String[]
 }
 
 // TCU Penalidades por faltas cometidas em certames e na execução de contratos
