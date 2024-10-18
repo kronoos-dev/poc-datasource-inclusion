@@ -1,4 +1,8 @@
-  
+interface YearDateRange {
+  initialDate: string
+  finalDate: string
+}
+
 function getMonthString(date: Date) : string {
   const month = String(date.getMonth() + 1)
   
@@ -24,4 +28,20 @@ function handleFindBenefitAvailableDateRange(initialdate: Date) {
   return dateRange
 }
 
-export { handleFindBenefitAvailableDateRange }
+function handleFindBenefitAvailableYearDateRange(initialdate: Date) {
+  const dateRange: YearDateRange[] = [] as YearDateRange[]
+  const now = new Date()
+
+  let date = initialdate
+  while (date < now) {
+    dateRange.push({
+      initialDate: `01/${getYearString(date)}`,
+      finalDate: `12/${getYearString(date)}`
+    })
+    date.setMonth(date.getMonth() + 1)
+    
+  }
+  return dateRange
+}
+
+export { handleFindBenefitAvailableDateRange, handleFindBenefitAvailableYearDateRange }

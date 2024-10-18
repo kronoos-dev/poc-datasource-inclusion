@@ -1,4 +1,5 @@
 enum EndpointUrlEnum {
+  // BENEFICIO CIDADAO
   AUXILIO_BRASIL = '/auxilio-brasil-por-municipio',
   NOVO_BOLSA_FAMILIA = '/novo-bolsa-familia-por-municipio',
   BOLSA_FAMILIA = '/bolsa-familia-por-municipio',
@@ -7,6 +8,9 @@ enum EndpointUrlEnum {
   PETIT = '/peti-por-municipio',
   BPC = '/bpc-por-municipio',
   AUXILIO_EMERGENCIAL = '/auxilio-emergencial-por-municipio',
+
+  // CARTOES
+  CARTOES = '/cartoes',
 }
 
 type EndpointUrlEnumStrings = keyof typeof EndpointUrlEnum;

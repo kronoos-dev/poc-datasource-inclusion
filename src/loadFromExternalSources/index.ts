@@ -1,31 +1,33 @@
-import { loadAuxilioBrasilData } from "./portalDaTransparencia/beneficioCidadao/loadAuxilioBrasilData"
-import { loadAuxilioEmergencialData } from "./portalDaTransparencia/beneficioCidadao/loadAuxilioEmergencial"
-import { loadBolsaFamiliaData } from "./portalDaTransparencia/beneficioCidadao/loadBolsaFamilia"
-import { loadBpcData } from "./portalDaTransparencia/beneficioCidadao/loadBpc"
-import { loadNovoBolsaFamilia } from "./portalDaTransparencia/beneficioCidadao/loadNovoBolsaFamiliaData"
-import { loadPetitData } from "./portalDaTransparencia/beneficioCidadao/loadPeti"
-import { loadSafraData } from "./portalDaTransparencia/beneficioCidadao/loadSafra"
-import { loadSeguroDefesoData } from "./portalDaTransparencia/beneficioCidadao/loadSeguroDefeso"
+import { loadCartoesData } from "./portalDaTransparencia/beneficioCidadao/loadCartoes";
 
-function loadData() {
+async function loadData() {
   try {
 
+    // CVM    
+    // loadDeliberationsData()
+    // loadGeneralFrameworkOfDisallowedPersonsData()
+    // loadGeneralFrameworkOfPersonsProhibitedFromActingData()
+    
     // CEEP    
     // loadCeepData()
     
     // Portal da transparencia
-    loadAuxilioBrasilData()
-    loadSeguroDefesoData()
-    loadSafraData()
-    loadPetitData()
-    loadAuxilioEmergencialData()
-    loadBpcData()
-    loadBolsaFamiliaData()
-    loadNovoBolsaFamilia()
+    // BENEFICIO CIDADAO --
+    // loadAuxilioBrasilData()
+    // loadSeguroDefesoData()
+    // loadSafraData()
+    // loadPetitData()
+    // loadAuxilioEmergencialData()
+    // loadBpcData()
+    // loadBolsaFamiliaData()
+    // loadNovoBolsaFamilia()
+    // CARTOES --
+    loadCartoesData()
   } catch (error) {
-    
+    throw new Error(`Ops, algo deu errado: ${error}`);
   }
-  
+
+
 }
 
 
