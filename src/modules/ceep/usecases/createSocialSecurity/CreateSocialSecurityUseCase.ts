@@ -1,7 +1,7 @@
-import { IGeneralActiveDebtRepository } from "@modules/ceep/repositories/IGeneralActiveDebtRepository";
+import { ISocialSecurityRepository } from "@modules/ceep/repositories/ISocialSecurityRepository";
 import { getDateTimeFromString } from "@utils/dateParse";
 
-interface GeneralActiveDebtInputPayload {
+interface SocialSecurityInputPayload {
   id?: string;
   cpfCnpj: string;
   personType: string;
@@ -12,14 +12,14 @@ interface GeneralActiveDebtInputPayload {
   registrationNumber: string;
   registrationSituationType: string;
   registrationSituation: string;
-  mainRevenue: string;
+  creditType: string;
   registrationDate: Date | string;
   indicatorJudged: boolean;
   consolidatedValue: number;
 }
 
-class CreateGeneralActiveDebtUseCase {
-  constructor(private generalActiveDebt: IGeneralActiveDebtRepository) {}
+class CreateSocialSecurityUseCase {
+  constructor(private socialSecurityRepository: ISocialSecurityRepository) {}
 
   execute({
     cpfCnpj,
@@ -31,12 +31,12 @@ class CreateGeneralActiveDebtUseCase {
     registrationNumber,
     registrationSituationType,
     registrationSituation,
-    mainRevenue,
+    creditType,
     registrationDate,
     indicatorJudged,
     consolidatedValue,
-  }: GeneralActiveDebtInputPayload) {
-    const generalActiveDebt = this.generalActiveDebt.create({
+  }: SocialSecurityInputPayload) {
+    const fgtsDebt = this.socialSecurityRepository.create({
       cpfCnpj,
       personType,
       debtorType,
@@ -46,14 +46,14 @@ class CreateGeneralActiveDebtUseCase {
       registrationNumber,
       registrationSituationType,
       registrationSituation,
-      mainRevenue,
+      creditType,
       indicatorJudged,
       consolidatedValue,
       registrationDate: getDateTimeFromString(registrationDate as string),
     });
 
-    return generalActiveDebt;
+    return fgtsDebt;
   }
 }
 
-export { CreateGeneralActiveDebtUseCase };
+export { CreateSocialSecurityUseCase };

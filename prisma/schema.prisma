@@ -488,7 +488,7 @@ model socialSecurityDebt_Debt_System {
   registrationNumber        String
   registrationSituationType String
   registrationSituation     String
-  mainRevenue               String
+  creditType                String
   registrationDate          DateTime
   indicatorJudged           Boolean
   consolidatedValue         Int

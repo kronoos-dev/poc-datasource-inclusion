@@ -7,7 +7,7 @@ const readFile = async (): Promise<any[]> => {
 
   return new Promise((resolve, reject) => {
     fs.createReadStream(
-      "assets/pgfn/fgts_debt/2021_trimestre_01-Dados_abertos_FGTS/arquivo_lai_FGTS_AC_202103"
+      "assets/pgfn/fgts_debt/2021_trimestre_01-Dados_abertos_FGTS/arquivo_lai_FGTS_AC_202103.csv"
     )
       .pipe(csv())
       .on("data", (data: any) => {

@@ -1,13 +1,13 @@
 import fs from "fs";
 import csv from "csv-parser";
-import { createGeneralActiveDebtDataQueue } from "queues/createGeneralActiveDebtData";
+import { createSocialSecurityDataQueue } from "queues/createSocialSecurityData";
 
 const readFile = async (): Promise<any[]> => {
   const results: any[] = [];
 
   return new Promise((resolve, reject) => {
     fs.createReadStream(
-      "assets/pgfn/general_active_debt/arquivo_lai_SIDA_6_202403.csv"
+      "assets/pgfn/social_security_debt/arquivo_lai_PREV_2_202403.csv"
     )
       .pipe(csv())
       .on("data", (data: any) => {
@@ -20,12 +20,12 @@ const readFile = async (): Promise<any[]> => {
   });
 };
 
-async function loadGeneralActiveDebtData() {
+async function loadSocialSecurityData() {
   const array = await readFile();
 
   array.map((data) => {
-    createGeneralActiveDebtDataQueue.add(data);
+    createSocialSecurityDataQueue.add(data);
   });
 }
 
-export { loadGeneralActiveDebtData };
+export { loadSocialSecurityData };

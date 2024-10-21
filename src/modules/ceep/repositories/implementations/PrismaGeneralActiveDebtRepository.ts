@@ -38,25 +38,26 @@ class PrismaGeneralActiveDebtRepository
     indicatorJudged,
     consolidatedValue,
   }: Prisma.generalActiveDebt_SIDA_SystemCreateInput): Promise<generalActiveDebt_SIDA_System> {
-    const newFgtsDebt = await prisma.generalActiveDebt_SIDA_System.create({
-      data: {
-        cpfCnpj,
-        personType,
-        debtorType,
-        debtorName,
-        debtorState,
-        responsibleUnit,
-        registrationNumber,
-        registrationSituationType,
-        registrationSituation,
-        mainRevenue,
-        registrationDate,
-        indicatorJudged,
-        consolidatedValue,
-      },
-    });
+    const newGeneralActiveDebt =
+      await prisma.generalActiveDebt_SIDA_System.create({
+        data: {
+          cpfCnpj,
+          personType,
+          debtorType,
+          debtorName,
+          debtorState,
+          responsibleUnit,
+          registrationNumber,
+          registrationSituationType,
+          registrationSituation,
+          mainRevenue,
+          registrationDate,
+          indicatorJudged,
+          consolidatedValue,
+        },
+      });
 
-    return newFgtsDebt;
+    return newGeneralActiveDebt;
   }
 }
 
