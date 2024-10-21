@@ -447,7 +447,7 @@ model generalActiveDebt_SIDA_System {
   debtorName                String
   debtorState               String
   responsibleUnit           String
-  registrationNumber        Int
+  registrationNumber        String
   registrationSituationType String
   registrationSituation     String
   mainRevenue               String
@@ -485,10 +485,10 @@ model socialSecurityDebt_Debt_System {
   debtorName                String
   debtorState               String
   responsibleUnit           String
-  registrationNumber        Int
+  registrationNumber        String
   registrationSituationType String
   registrationSituation     String
-  creditType                String
+  mainRevenue               String
   registrationDate          DateTime
   indicatorJudged           Boolean
   consolidatedValue         Int

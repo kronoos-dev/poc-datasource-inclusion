@@ -1,16 +1,15 @@
 import { IFgtsDebtRepository } from "@modules/ceep/repositories/IFgtsDebtRepository";
+import { IGeneralActiveDebtRepository } from "@modules/ceep/repositories/IGeneralActiveDebtRepository";
 import { getDateTimeFromString } from "@utils/dateParse";
 
-interface FgtsDebtCreateInputPayload {
+interface GeneralActiveDebtInputPayload {
   id?: string;
   cpfCnpj: string;
   personType: string;
   debtorType: string;
   debtorName: string;
-  responsibleUnitState: string;
+  debtorState: string;
   responsibleUnit: string;
-  responsibleEntity: string;
-  registrationUnit: string;
   registrationNumber: string;
   registrationSituationType: string;
   registrationSituation: string;
@@ -20,18 +19,16 @@ interface FgtsDebtCreateInputPayload {
   consolidatedValue: number;
 }
 
-class CreateFgtsDebtUseCase {
-  constructor(private fgtsDebtRepository: IFgtsDebtRepository) {}
+class CreateGeneralActiveDebtUseCase {
+  constructor(private generalActiveDebt: IGeneralActiveDebtRepository) {}
 
   execute({
     cpfCnpj,
     personType,
     debtorType,
     debtorName,
-    responsibleUnitState,
+    debtorState,
     responsibleUnit,
-    responsibleEntity,
-    registrationUnit,
     registrationNumber,
     registrationSituationType,
     registrationSituation,
@@ -39,27 +36,25 @@ class CreateFgtsDebtUseCase {
     registrationDate,
     indicatorJudged,
     consolidatedValue,
-  }: FgtsDebtCreateInputPayload) {
-    const fgtsDebt = this.fgtsDebtRepository.create({
+  }: GeneralActiveDebtInputPayload) {
+    const fgtsDebt = this.generalActiveDebt.create({
       cpfCnpj,
       personType,
       debtorType,
       debtorName,
-      responsibleUnitState,
+      debtorState,
       responsibleUnit,
-      responsibleEntity,
-      registrationUnit,
       registrationNumber,
       registrationSituationType,
       registrationSituation,
       mainRevenue,
-      registrationDate: getDateTimeFromString(registrationDate as string),
       indicatorJudged,
       consolidatedValue,
+      registrationDate: getDateTimeFromString(registrationDate as string),
     });
 
     return fgtsDebt;
   }
 }
 
-export { CreateFgtsDebtUseCase };
+export { CreateGeneralActiveDebtUseCase };
