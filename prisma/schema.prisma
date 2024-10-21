@@ -360,8 +360,6 @@ model sanctionedCompanies {
   debitValue            Int
   legalFundament        String
   sicafRegistrationDate DateTime
-  sanctionStartDate     DateTime
-  sanctionEndDate       DateTime
 }
 
 // TCU  Inexigibilidades

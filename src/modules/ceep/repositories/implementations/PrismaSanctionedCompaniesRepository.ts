@@ -34,8 +34,6 @@ class PrismaSanctionedCompaniesRepository
     debitValue,
     legalFundament,
     sicafRegistrationDate,
-    sanctionStartDate,
-    sanctionEndDate,
   }: Prisma.sanctionedCompaniesCreateInput): Promise<sanctionedCompanies> {
     const newTendersAndContracts = await prisma.sanctionedCompanies.create({
       data: {
@@ -50,8 +48,6 @@ class PrismaSanctionedCompaniesRepository
         debitValue,
         legalFundament,
         sicafRegistrationDate,
-        sanctionStartDate,
-        sanctionEndDate,
       },
     });
 

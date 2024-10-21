@@ -14,8 +14,6 @@ interface SanctionedCompaniesCreateInputPayload {
   debitValue: number;
   legalFundament: string;
   sicafRegistrationDate: Date | string;
-  sanctionStartDate: Date | string;
-  sanctionEndDate: Date | string;
 }
 
 class CreateSanctionedCompaniesUseCase {
@@ -35,8 +33,6 @@ class CreateSanctionedCompaniesUseCase {
     debitValue,
     legalFundament,
     sicafRegistrationDate,
-    sanctionStartDate,
-    sanctionEndDate,
   }: SanctionedCompaniesCreateInputPayload) {
     const sanctionedCompanies = this.sanctionedCompaniesRepository.create({
       processNumber,
@@ -52,8 +48,6 @@ class CreateSanctionedCompaniesUseCase {
       sicafRegistrationDate: getDateTimeFromString(
         sicafRegistrationDate as string
       ),
-      sanctionStartDate: getDateTimeFromString(sanctionStartDate as string),
-      sanctionEndDate: getDateTimeFromString(sanctionEndDate as string),
     });
 
     return sanctionedCompanies;

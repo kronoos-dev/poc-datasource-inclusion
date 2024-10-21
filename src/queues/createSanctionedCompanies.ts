@@ -9,19 +9,17 @@ const createSanctionedCompaniesQueue = new Bull(
 
 createSanctionedCompaniesQueue.process(async (job) => {
   const {
-    N_do_Processo,
-    Empresa,
-    CNPJ,
-    Numero_do_contrato,
-    Objeto,
-    Tipo_da_sancao,
-    Detalhe_da_sancao,
-    Valor_da_multa,
-    Valor_do_debito,
-    Fundamento_legal,
-    Data_de_registro,
-    Data_de_inicio,
-    Data_de_termino,
+    NUMERO_PROCESSO,
+    RAZ_SOCIAL,
+    NUM_CNPJ,
+    NUMERO_CONTRATO,
+    OBJETO,
+    TIPO_SANCAO,
+    DETALHE_SANCAO,
+    VALOR_MULTA,
+    VALOR_DEBITO,
+    FUNDAMENTO_LEGAL,
+    DT_REGISTRO_SICAF,
   } = job.data;
 
   const sanctionedCompaniesRepository =
@@ -32,19 +30,17 @@ createSanctionedCompaniesQueue.process(async (job) => {
 
   try {
     const result = await createSanctionedCompaniesUseCase.execute({
-      processNumber: N_do_Processo,
-      company: Empresa,
-      cnpj: CNPJ,
-      contractNumber: Numero_do_contrato,
-      object: Objeto,
-      sanctionType: Tipo_da_sancao,
-      sanctionDetail: Detalhe_da_sancao,
-      fineValue: Valor_da_multa,
-      debitValue: Valor_do_debito,
-      legalFundament: Fundamento_legal,
-      sicafRegistrationDate: Data_de_registro,
-      sanctionStartDate: Data_de_inicio,
-      sanctionEndDate: Data_de_termino,
+      processNumber: NUMERO_PROCESSO,
+      company: RAZ_SOCIAL,
+      cnpj: NUM_CNPJ,
+      contractNumber: NUMERO_CONTRATO,
+      object: OBJETO,
+      sanctionType: TIPO_SANCAO,
+      sanctionDetail: DETALHE_SANCAO,
+      fineValue: VALOR_MULTA,
+      debitValue: VALOR_DEBITO,
+      legalFundament: FUNDAMENTO_LEGAL,
+      sicafRegistrationDate: DT_REGISTRO_SICAF,
     });
 
     console.table(result);
