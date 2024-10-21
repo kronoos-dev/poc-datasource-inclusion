@@ -6,7 +6,7 @@ const readFile = async (): Promise<any[]> => {
   const results: any[] = [];
 
   return new Promise((resolve, reject) => {
-    fs.createReadStream("../../../assets/tcu/termos_contratuais.csv")
+    fs.createReadStream("../../../assets/tcu/report_1.csv")
       .pipe(csv())
       .on("data", (data: any) => {
         results.push(data);
@@ -18,7 +18,7 @@ const readFile = async (): Promise<any[]> => {
   });
 };
 
-async function loadTendersAndContractsData() {
+async function loadSanctionedCompaniesData() {
   const array = await readFile();
 
   array.map((data) => {
@@ -26,4 +26,4 @@ async function loadTendersAndContractsData() {
   });
 }
 
-export { loadTendersAndContractsData };
+export { loadSanctionedCompaniesData };

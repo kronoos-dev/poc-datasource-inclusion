@@ -1,4 +1,5 @@
 import { ITendersAndContractsRepository } from "@modules/ceep/repositories/ITendersAndContractsRepository";
+import { getDateTimeFromString } from "@utils/dateParse";
 
 interface TendersAndContractsCreateInputPayload {
   id?: string;
@@ -41,26 +42,25 @@ class CreateTendersAndContractsUseCase {
     biddingYear,
     originProcess,
   }: TendersAndContractsCreateInputPayload) {
-    const contractExecutionsAndCompetitionsPenalties =
-      this.tendersAndContractsRepository.create({
-        contractualTerm,
-        supplier,
-        object,
-        supervisionUnits,
-        signatureDate,
-        validityDateStart,
-        validityDateEnd,
-        extendable,
-        maximumValidityDate,
-        initialValue,
-        updatedTotalValue,
-        biddingType,
-        biddingNumber,
-        biddingYear,
-        originProcess,
-      });
+    const tendersAndContracts = this.tendersAndContractsRepository.create({
+      contractualTerm,
+      supplier,
+      object,
+      supervisionUnits,
+      signatureDate: getDateTimeFromString(signatureDate as string),
+      validityDateStart: getDateTimeFromString(validityDateStart as string),
+      validityDateEnd: getDateTimeFromString(validityDateEnd as string),
+      extendable,
+      maximumValidityDate: getDateTimeFromString(maximumValidityDate as string),
+      initialValue,
+      updatedTotalValue,
+      biddingType,
+      biddingNumber,
+      biddingYear,
+      originProcess,
+    });
 
-    return contractExecutionsAndCompetitionsPenalties;
+    return tendersAndContracts;
   }
 }
 
