@@ -3,21 +3,13 @@ import { getDateTimeFromString } from "@utils/dateParse";
 
 interface ContractExecutionsAndCompetitionsPenaltiesCreateInputPayload {
   id?: string;
-  cpfCnpj: string;
-  personType: string;
-  debtorType: string;
-  debtorName: string;
-  responsibleUnitState: string;
-  responsibleUnit: string;
-  responsibleEntity: string;
-  registrationUnit: string;
-  registrationNumber: string;
-  registrationSituationType: string;
-  registrationSituation: string;
-  mainRevenue: string;
-  registrationDate: Date | string;
-  legalIndicator: string;
-  consolidatedValue: number;
+  modality: string;
+  yearNumber: string;
+  object: string;
+  originalProcessNumber: string;
+  contractualTerm: string;
+  biddingStatus: string;
+  estimatedValue: number;
 }
 
 class CreateContractExecutionsAndCompetitionsPenaltiesUseCase {
@@ -26,39 +18,23 @@ class CreateContractExecutionsAndCompetitionsPenaltiesUseCase {
   ) {}
 
   execute({
-    cpfCnpj,
-    personType,
-    debtorType,
-    debtorName,
-    responsibleUnitState,
-    responsibleUnit,
-    responsibleEntity,
-    registrationUnit,
-    registrationNumber,
-    registrationSituationType,
-    registrationSituation,
-    mainRevenue,
-    registrationDate,
-    legalIndicator,
-    consolidatedValue,
+    modality,
+    yearNumber,
+    object,
+    originalProcessNumber,
+    contractualTerm,
+    biddingStatus,
+    estimatedValue,
   }: ContractExecutionsAndCompetitionsPenaltiesCreateInputPayload) {
     const contractExecutionsAndCompetitionsPenalties =
       this.contractExecutionsAndCompetitionsPenaltiesRepository.create({
-        cpfCnpj,
-        personType,
-        debtorType,
-        debtorName,
-        responsibleUnitState,
-        responsibleUnit,
-        responsibleEntity,
-        registrationUnit,
-        registrationNumber,
-        registrationSituationType,
-        registrationSituation,
-        mainRevenue,
-        registrationDate: getDateTimeFromString(registrationDate as string),
-        legalIndicator,
-        consolidatedValue,
+        modality,
+        yearNumber,
+        object,
+        originalProcessNumber,
+        contractualTerm,
+        biddingStatus,
+        estimatedValue,
       });
 
     return contractExecutionsAndCompetitionsPenalties;

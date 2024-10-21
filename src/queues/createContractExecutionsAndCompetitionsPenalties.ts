@@ -9,21 +9,13 @@ const createContractExecutionsAndCompetitionsPenaltiesQueue = new Bull(
 
 createContractExecutionsAndCompetitionsPenaltiesQueue.process(async (job) => {
   const {
-    CPF_CNPJ,
-    TIPO_PESSOA,
-    TIPO_DEVEDOR,
-    NOME_DEVEDOR,
-    UF_UNIDADE_RESPONSAVEL,
-    UNIDADE_RESPONSAVEL,
-    ENTIDADE_RESPONSAVEL,
-    UNIDADE_INSCRICAO,
-    NUMERO_INSCRICAO,
-    TIPO_SITUACAO_INSCRICAO,
-    SITUACAO_INSCRICAO,
-    RECEITA_PRINCIPAL,
-    DATA_INSCRICAO,
-    INDICADOR_AJUIZADO,
-    VALOR_CONSOLIDADO,
+    Modalidade,
+    Ano,
+    Objeto,
+    Processo,
+    Termo_contratual,
+    Situacao_da_licitacao,
+    Valor_estimado,
   } = job.data;
 
   const contractExecutionsAndCompetitionsPenaltiesRepository =
@@ -36,21 +28,13 @@ createContractExecutionsAndCompetitionsPenaltiesQueue.process(async (job) => {
   try {
     const result =
       await createContractExecutionsAndCompetitionsPenaltiesUseCase.execute({
-        cpfCnpj: CPF_CNPJ,
-        personType: TIPO_PESSOA,
-        debtorType: TIPO_DEVEDOR,
-        debtorName: NOME_DEVEDOR,
-        responsibleUnitState: UF_UNIDADE_RESPONSAVEL,
-        responsibleUnit: UNIDADE_RESPONSAVEL,
-        responsibleEntity: ENTIDADE_RESPONSAVEL,
-        registrationUnit: UNIDADE_INSCRICAO,
-        registrationNumber: NUMERO_INSCRICAO,
-        registrationSituationType: TIPO_SITUACAO_INSCRICAO,
-        registrationSituation: SITUACAO_INSCRICAO,
-        mainRevenue: RECEITA_PRINCIPAL,
-        registrationDate: DATA_INSCRICAO,
-        legalIndicator: INDICADOR_AJUIZADO,
-        consolidatedValue: VALOR_CONSOLIDADO,
+        modality: Modalidade,
+        yearNumber: Ano,
+        object: Objeto,
+        originalProcessNumber: Processo,
+        contractualTerm: Termo_contratual,
+        biddingStatus: Situacao_da_licitacao,
+        estimatedValue: Valor_estimado,
       });
 
     console.table(result);

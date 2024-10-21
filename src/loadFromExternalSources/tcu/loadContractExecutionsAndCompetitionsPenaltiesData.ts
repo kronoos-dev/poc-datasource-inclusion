@@ -1,13 +1,13 @@
-import { createDeliberationsQueue } from "queues/createDeliberations";
 import fs from "fs";
 import csv from "csv-parser";
+import { createContractExecutionsAndCompetitionsPenaltiesQueue } from "queues/createContractExecutionsAndCompetitionsPenalties";
 
 const readFile = async (): Promise<any[]> => {
   const results: any[] = [];
 
   return new Promise((resolve, reject) => {
     fs.createReadStream(
-      "../../../assets/pgfn/fgts_debt/2021_trimestre_01-Dados_abertos_FGTSarquivo_lai_FGTS_AC_202103.csv"
+      "../../../assets/tcu/contract_executions_and_competitions_penalties/licitacoes_concluídas.csv"
     )
       .pipe(csv())
       .on("data", (data: any) => {
@@ -24,7 +24,7 @@ async function loadContractExecutionsAndCompetitionsPenaltiesData() {
   const array = await readFile();
 
   array.map((data) => {
-    createDeliberationsQueue.add(data);
+    createContractExecutionsAndCompetitionsPenaltiesQueue.add(data);
   });
 }
 
