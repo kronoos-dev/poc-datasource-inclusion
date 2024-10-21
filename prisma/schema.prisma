@@ -463,11 +463,11 @@ model FGTSDebt {
   personType                String
   debtorType                String
   debtorName                String
-  debtorState               String
+  responsibleUnitState      String
   responsibleUnit           String
   responsibleEntity         String
   registrationUnit          String
-  registrationNumber        Int
+  registrationNumber        String
   registrationSituationType String
   registrationSituation     String
   mainRevenue               String
