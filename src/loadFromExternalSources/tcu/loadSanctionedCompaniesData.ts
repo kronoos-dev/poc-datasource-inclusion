@@ -1,6 +1,6 @@
 import fs from "fs";
 import csv from "csv-parser";
-import { createTendersAndContractsQueue } from "queues/createTendersAndContracts";
+import { createTendersAndContractsQueue } from "queues/createContractualTerms";
 
 const readFile = async (): Promise<any[]> => {
   const results: any[] = [];

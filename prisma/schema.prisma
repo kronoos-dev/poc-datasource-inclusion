@@ -327,7 +327,7 @@ model appliedPenalties {
 }
 
 //TCU Licitações e Contratos
-model tendersAndContracts {
+model contractualTerms {
   id                  String   @id @default(uuid()) @db.Uuid
   contractualTerm     String
   supplier            String
@@ -338,8 +338,8 @@ model tendersAndContracts {
   validityDateEnd     DateTime
   extendable          Boolean
   maximumValidityDate DateTime
-  initialValue        Int
-  updatedTotalValue   Int
+  initialValue        String
+  updatedTotalValue   String
   biddingType         String
   biddingNumber       Int
   biddingYear         Int

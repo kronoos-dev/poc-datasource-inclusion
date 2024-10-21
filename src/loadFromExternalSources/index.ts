@@ -1,5 +1,6 @@
 import { loadCartoesData } from "./portalDaTransparencia/beneficioCidadao/loadCartoes";
 import { loadAppliedPenaltiesData } from "./tcu/loadAppliedPenaltiesData";
+import { loadContractualTermsData } from "./tcu/loadContractualTermsData";
 
 async function loadData() {
   try {
@@ -23,7 +24,8 @@ async function loadData() {
     // loadCartoesData()
 
     // TCU
-    loadAppliedPenaltiesData();
+    //loadAppliedPenaltiesData();
+    loadContractualTermsData();
   } catch (error) {
     throw new Error(`Ops, algo deu errado: ${error}`);
   }

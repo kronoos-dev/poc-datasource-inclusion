@@ -1,7 +1,7 @@
-import { ITendersAndContractsRepository } from "@modules/ceep/repositories/ITendersAndContractsRepository";
+import { IContractualTermsRepository } from "@modules/ceep/repositories/IContractualTermsRepository";
 import { getDateTimeFromString } from "@utils/dateParse";
 
-interface TendersAndContractsCreateInputPayload {
+interface ContractualTermsCreateInputPayload {
   id?: string;
   contractualTerm: string;
   supplier: string;
@@ -12,17 +12,17 @@ interface TendersAndContractsCreateInputPayload {
   validityDateEnd: Date | string;
   extendable: boolean;
   maximumValidityDate: Date | string;
-  initialValue: number;
-  updatedTotalValue: number;
+  initialValue: string;
+  updatedTotalValue: string;
   biddingType: string;
   biddingNumber: number;
   biddingYear: number;
   originProcess: string;
 }
 
-class CreateTendersAndContractsUseCase {
+class CreateContractualTermsUseCase {
   constructor(
-    private tendersAndContractsRepository: ITendersAndContractsRepository
+    private contractualTermsRepository: IContractualTermsRepository
   ) {}
 
   execute({
@@ -41,8 +41,8 @@ class CreateTendersAndContractsUseCase {
     biddingNumber,
     biddingYear,
     originProcess,
-  }: TendersAndContractsCreateInputPayload) {
-    const tendersAndContracts = this.tendersAndContractsRepository.create({
+  }: ContractualTermsCreateInputPayload) {
+    const contractualTerms = this.contractualTermsRepository.create({
       contractualTerm,
       supplier,
       object,
@@ -60,8 +60,8 @@ class CreateTendersAndContractsUseCase {
       originProcess,
     });
 
-    return tendersAndContracts;
+    return contractualTerms;
   }
 }
 
-export { CreateTendersAndContractsUseCase };
+export { CreateContractualTermsUseCase };
