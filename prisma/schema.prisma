@@ -9,20 +9,20 @@ datasource db {
 }
 
 enum PortalDaTransparenciaResource {
-  AUXILIO_BRASIL 
+  AUXILIO_BRASIL
   NOVO_BOLSA_FAMILIA
-  BOLSA_FAMILIA 
-  SEGURO_DEFESO 
-  SAFRA 
+  BOLSA_FAMILIA
+  SEGURO_DEFESO
+  SAFRA
   PETIT
-  BPC 
+  BPC
   AUXILIO_EMERGENCIAL
   CARTOES
 }
 
 model PortalDaTransparenciaItem {
-  id                  String   @id @default(uuid()) @db.Uuid
-  resource PortalDaTransparenciaResource
+  id          String                        @id @default(uuid()) @db.Uuid
+  resource    PortalDaTransparenciaResource
   apiResponse Json?
 }
 
@@ -314,16 +314,22 @@ model celebratedDeals {
 
 // TCU Penalidades por faltas cometidas em certames e na execução de contratos
 model contractExecutionsAndCompetitionsPenalties {
-  id                        String @id @default(uuid()) @db.Uuid
-  year                      Int
-  auction                   String
-  process                   String
-  cnpj                      String
-  bidder                    String
-  object                    String
-  behavior                  String
-  biddingImpedimentInMonths Int
-  fine                      Int
+  id                        String   @id @default(uuid()) @db.Uuid
+  cpfCnpj                   String
+  personType                String
+  debtorType                String
+  debtorName                String
+  responsibleUnitState      String
+  responsibleUnit           String
+  responsibleEntity         String
+  registrationUnit          String
+  registrationNumber        String
+  registrationSituationType String
+  registrationSituation     String
+  mainRevenue               String
+  registrationDate          DateTime
+  legalIndicator            String
+  consolidatedValue         Int
 }
 
 //TCU Licitações e Contratos

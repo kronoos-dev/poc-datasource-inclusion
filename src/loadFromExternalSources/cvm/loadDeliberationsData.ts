@@ -1,7 +1,7 @@
 import { createDeliberationsQueue } from "queues/createDeliberations";
 import { GetDeliberationsData } from "scraping/cvm/get_deliberations_data";
 
-async function loadDeliberationsData(){
+async function loadDeliberationsData() {
   const getDeliberationsData = new GetDeliberationsData();
 
   const deliberationsData = await getDeliberationsData.execute({});
@@ -14,4 +14,3 @@ async function loadDeliberationsData(){
 }
 
 export { loadDeliberationsData };
-
