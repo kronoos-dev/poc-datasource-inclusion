@@ -313,15 +313,17 @@ model celebratedDeals {
 }
 
 // TCU Penalidades por faltas cometidas em certames e na execução de contratos
-model contractExecutionsAndCompetitionsPenalties {
+model appliedPenalties {
   id                    String @id @default(uuid()) @db.Uuid
-  modality              String
-  yearNumber            String
+  year                  Int
+  pregao                String
+  process               String
+  cnpj                  String
+  bidder                String
   object                String
-  originalProcessNumber String
-  contractualTerm       String
-  biddingStatus         String
-  estimatedValue        Int
+  conduct               String
+  impeditionFromBidding String
+  fineValue             Int
 }
 
 //TCU Licitações e Contratos
