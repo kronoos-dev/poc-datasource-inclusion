@@ -11,6 +11,10 @@ enum EndpointUrlEnum {
 
   // CARTOES
   CARTOES = '/cartoes',
+  
+  // CONVÊNIOS E ACORDOS
+  ACORDOS_LENIENCIA = '/acordos-leniencia',
+  CONVENIOS = '/convenios',
 }
 
 type EndpointUrlEnumStrings = keyof typeof EndpointUrlEnum;

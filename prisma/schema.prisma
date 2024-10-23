@@ -18,6 +18,8 @@ enum PortalDaTransparenciaResource {
   BPC 
   AUXILIO_EMERGENCIAL
   CARTOES
+  ACORDOS_LENIENCIA
+  CONVENIOS
 }
 
 model PortalDaTransparenciaItem {

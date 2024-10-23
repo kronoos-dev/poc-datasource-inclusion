@@ -38,7 +38,7 @@ function handleFindBenefitAvailableYearDateRange(initialdate: Date) {
       initialDate: `01/${getYearString(date)}`,
       finalDate: `12/${getYearString(date)}`
     })
-    date.setMonth(date.getMonth() + 1)
+    date.setFullYear(date.getFullYear() + 1)
     
   }
   return dateRange

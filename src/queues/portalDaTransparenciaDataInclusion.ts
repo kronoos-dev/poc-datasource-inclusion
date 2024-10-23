@@ -22,7 +22,8 @@ interface GetCartaoDataJobDataType {
 const portalDaTransparenciaQueue = new Bull<GetBeneficioAoCidadaoDataJobDataType | GetCartaoDataJobDataType>('portalDaTransparencia', process.env.REDIS_URL || 'redis://localhost:6379', {
   limiter: {
     max: 150,    
-    duration: 1000 * 60
+    duration: 1000 * 60,
+    
   }
 });
 
@@ -65,14 +66,16 @@ portalDaTransparenciaQueue.process(async ({ data }) => {
     const portalDaTransparenciaItemRepository = PrismaPortalDaTransparenciaItemRepository.getInstance();
     const createPortalDaTransparenciaItemUseCase = new CreatePortalDaTransparenciaItemUseCase(portalDaTransparenciaItemRepository);
   
+    
     if(data.length !== 0 && Array.isArray(data)) {
       for (const apiResponse of data) {
+        console.table(apiResponse)
+
         await createPortalDaTransparenciaItemUseCase.execute({
           apiResponse,
           resource
         })    
 
-        console.table(apiResponse)
         let db = await readDB(resource, mesAno);
     
         if(!db) db = []
@@ -84,7 +87,9 @@ portalDaTransparenciaQueue.process(async ({ data }) => {
     
         console.debug('dados do portalDaTransparenciaData salvos com sucesso!')
       }
-    }    
+    } else {
+      console.debug('Nenhum dado encontrado')
+    }
   
     } catch (error) {
       throw new Error(error as any);
