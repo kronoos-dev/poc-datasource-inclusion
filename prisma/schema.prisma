@@ -9,13 +9,13 @@ datasource db {
 }
 
 enum PortalDaTransparenciaResource {
-  AUXILIO_BRASIL 
+  AUXILIO_BRASIL
   NOVO_BOLSA_FAMILIA
-  BOLSA_FAMILIA 
-  SEGURO_DEFESO 
-  SAFRA 
+  BOLSA_FAMILIA
+  SEGURO_DEFESO
+  SAFRA
   PETIT
-  BPC 
+  BPC
   AUXILIO_EMERGENCIAL
   CARTOES
   ACORDOS_LENIENCIA
@@ -23,8 +23,8 @@ enum PortalDaTransparenciaResource {
 }
 
 model PortalDaTransparenciaItem {
-  id                  String   @id @default(uuid()) @db.Uuid
-  resource PortalDaTransparenciaResource
+  id          String                        @id @default(uuid()) @db.Uuid
+  resource    PortalDaTransparenciaResource
   apiResponse Json?
 }
 
@@ -315,21 +315,21 @@ model celebratedDeals {
 }
 
 // TCU Penalidades por faltas cometidas em certames e na execução de contratos
-model contractExecutionsAndCompetitionsPenalties {
-  id                        String @id @default(uuid()) @db.Uuid
-  year                      Int
-  auction                   String
-  process                   String
-  cnpj                      String
-  bidder                    String
-  object                    String
-  behavior                  String
-  biddingImpedimentInMonths Int
-  fine                      Int
+model appliedPenalties {
+  id                    String @id @default(uuid()) @db.Uuid
+  year                  Int
+  pregao                String
+  process               String
+  cnpj                  String
+  bidder                String
+  object                String
+  conduct               String
+  impeditionFromBidding String
+  fineValue             Int
 }
 
 //TCU Licitações e Contratos
-model tendersAndContracts {
+model contractualTerms {
   id                  String   @id @default(uuid()) @db.Uuid
   contractualTerm     String
   supplier            String
@@ -340,8 +340,8 @@ model tendersAndContracts {
   validityDateEnd     DateTime
   extendable          Boolean
   maximumValidityDate DateTime
-  initialValue        Int
-  updatedTotalValue   Int
+  initialValue        String
+  updatedTotalValue   String
   biddingType         String
   biddingNumber       Int
   biddingYear         Int
@@ -362,8 +362,6 @@ model sanctionedCompanies {
   debitValue            Int
   legalFundament        String
   sicafRegistrationDate DateTime
-  sanctionStartDate     DateTime
-  sanctionEndDate       DateTime
 }
 
 // TCU  Inexigibilidades
@@ -451,7 +449,7 @@ model generalActiveDebt_SIDA_System {
   debtorName                String
   debtorState               String
   responsibleUnit           String
-  registrationNumber        Int
+  registrationNumber        String
   registrationSituationType String
   registrationSituation     String
   mainRevenue               String
@@ -467,11 +465,11 @@ model FGTSDebt {
   personType                String
   debtorType                String
   debtorName                String
-  debtorState               String
+  responsibleUnitState      String
   responsibleUnit           String
   responsibleEntity         String
   registrationUnit          String
-  registrationNumber        Int
+  registrationNumber        String
   registrationSituationType String
   registrationSituation     String
   mainRevenue               String
@@ -489,7 +487,7 @@ model socialSecurityDebt_Debt_System {
   debtorName                String
   debtorState               String
   responsibleUnit           String
-  registrationNumber        Int
+  registrationNumber        String
   registrationSituationType String
   registrationSituation     String
   creditType                String

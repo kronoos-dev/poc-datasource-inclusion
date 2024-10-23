@@ -1,16 +1,15 @@
 import { loadCartoesData } from "./portalDaTransparencia/beneficioCidadao/loadCartoes";
+import { loadAppliedPenaltiesData } from "./tcu/loadAppliedPenaltiesData";
+import { loadContractualTermsData } from "./tcu/loadContractualTermsData";
 
 async function loadData() {
   try {
-
-    // CVM    
+    // CVM
     // loadDeliberationsData()
     // loadGeneralFrameworkOfDisallowedPersonsData()
     // loadGeneralFrameworkOfPersonsProhibitedFromActingData()
-    
-    // CEEP    
+    // CEEP
     // loadCeepData()
-    
     // Portal da transparencia
     // BENEFICIO CIDADAO --
     // loadAuxilioBrasilData()
@@ -22,13 +21,14 @@ async function loadData() {
     // loadBolsaFamiliaData()
     // loadNovoBolsaFamilia()
     // CARTOES --
-    loadCartoesData()
+    // loadCartoesData()
+
+    // TCU
+    //loadAppliedPenaltiesData();
+    loadContractualTermsData();
   } catch (error) {
     throw new Error(`Ops, algo deu errado: ${error}`);
   }
-
-
 }
 
-
-loadData()  
+loadData();
